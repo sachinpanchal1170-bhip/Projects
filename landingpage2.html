@@ -1,493 +1,1025 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Evo Systems</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evo Systems</title>
 
-  <style>
+<style>
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
 
-    body{
-      background:#f5f5f5;
-      color:#555555;
-      overflow-x:hidden;
-    }
+html{
+  scroll-behavior:smooth;
+}
 
-    header{
-      width:100%;
-      background:#fff;
-      padding:20px 7%;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      box-shadow:0 2px 8px rgba(0,0,0,0.08);
-    }
+body{
+  background:#f5f5f5;
+  color:#555555;
+  overflow-x:hidden;
+}
 
-    .logo{
-      font-size:26px;
-      font-weight:bold;
-      color:#005288;
-    }
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(60px);
+  }
 
-    nav ul{
-      display:flex;
-      list-style:none;
-      gap:25px;
-    }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
 
-    nav ul li a{
-      text-decoration:none;
-      color:#555555;
-      font-size:15px;
-      transition:.2s;
-    }
+@keyframes fadeLeft{
+  from{
+    opacity:0;
+    transform:translateX(-60px);
+  }
 
-    nav ul li a:hover{
-      color:#005288;
-    }
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
 
-    .hero{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:80px 7%;
-      gap:50px;
-      background:#fff;
-    }
+@keyframes fadeRight{
+  from{
+    opacity:0;
+    transform:translateX(60px);
+  }
 
-    .left{
-      flex:1;
-    }
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
 
-    .left h1{
-      font-size:48px;
-      color:#005288;
-      margin-bottom:20px;
-      line-height:125%;
-    }
+@keyframes zoomIn{
+  from{
+    opacity:0;
+    transform:scale(.8);
+  }
 
-    .left p{
-      line-height:150%;
-      margin-bottom:30px;
-      max-width:550px;
-    }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
 
-    .buttons{
-      display:flex;
-      gap:15px;
-    }
+header{
+  width:100%;
+  background:linear-gradient(to right, #005288, #0b6aa8);
+  padding:20px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.08);
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
 
-    .btn1{
-      background:#005288;
-      color:#fff;
-      text-decoration:none;
-      padding:14px 30px;
-      border-radius:8px;
-      transition:.3s;
-    }
+.logo{
+  font-size:28px;
+  font-weight:700;
+  color:#ffffff;
+}
 
-    .btn1:hover{
-      background:#005288;
-    }
+nav ul{
+  display:flex;
+  list-style:none;
+  gap:25px;
+}
 
-    .btn2{
-      background:#c2cd23;
-      color:#fff;
-      text-decoration:none;
-      padding:14px 28px;
-      border-radius:10px;
-    }
+nav ul li a{
+  text-decoration:none;
+  color:#ffffff;
+  transition:.4s;
+  position:relative;
+}
 
-    .right{
-      flex:1;
-    }
+nav ul li a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:#c2cd23;
+  transition:.4s;
+}
 
-    .right img{
-      width:100%;
-      border-radius:15px;
-      box-shadow:0 6px 18px rgba(0,0,0,0.12);
-    }
+nav ul li a:hover::after{
+  width:100%;
+}
 
-    .services{
-      padding:90px 6%;
-      background:#fafafa;
-    }
+nav ul li a:hover{
+  color:#c2cd23;
+}
 
-    .heading{
-      text-align:center;
-      margin-bottom:50px;
-    }
+.hero{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:50px;
+  padding:90px 7%;
+  background:#ffffff;
+}
 
-    .heading h2{
-      font-size:38px;
-      color:#005288;
-      margin-bottom:12px;
-    }
+.left{
+  flex:1;
+  animation:fadeLeft 1s ease;
+}
 
-    .heading p{
-      max-width:650px;
-      margin:auto;
-      line-height:150%;
-    }
+.left h1{
+  font-size:48px;
+  color:#005288;
+  line-height:125%;
+  margin-bottom:25px;
+}
 
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:25px;
-    }
+.left p{
+  line-height:150%;
+  margin-bottom:35px;
+  max-width:550px;
+}
 
-    .card{
-      background:#fff;
-      padding:35px 25px;
-      border-radius:12px;
-      box-shadow:0 4px 10px rgba(0,0,0,0.08);
-      transition:.2s ease;
-      border-bottom:4px solid #c4cf28;
-    }
+.buttons{
+  display:flex;
+  gap:15px;
+}
 
-    .card:hover{
-      transform:translateY(-6px);
-    }
+.btn1{
+  background:#005288;
+  color:#fff;
+  text-decoration:none;
+  padding:14px 30px;
+  border-radius:8px;
+  transition:.4s;
+}
 
-    .card h3{
-      margin:18px 0;
-      color:#005288;
-      font-size:28px;
-    }
+.btn1:hover{
+  background:#003b63;
+  transform:translateY(-3px);
+}
 
-    .card p{
-      line-height:150%;
-    }
+.btn2{
+  background:#c2cd23;
+  color:#fff;
+  text-decoration:none;
+  padding:14px 30px;
+  border-radius:8px;
+  transition:.4s;
+}
 
-    .banner{
-      background:#005288;
-      color:#fff;
-      text-align:center;
-      padding:75px 7%;
-    }
+.btn2:hover{
+  background:#a8b51d;
+  transform:translateY(-3px);
+}
 
-    .banner h2{
-      font-size:36px;
-      margin-bottom:15px;
-    }
+.right{
+  flex:1;
+  animation:fadeRight 1.2s ease;
+}
 
-    .banner p{
-      max-width:650px;
-      margin:auto;
-      line-height:150%;
-      margin-bottom:30px;
-    }
+.right img{
+  width:100%;
+  border-radius:14px;
+  transition:.5s;
+}
 
-    .banner a{
-      display:inline-block;
-      text-decoration:none;
-      background:#c4cf28;
-      color:#fff;
-      padding:14px 30px;
-      border-radius:8px;
-    }
+.right img:hover{
+  transform:scale(1.03);
+}
 
-    .reviews{
-      padding:80px 7%;
-      background:#fff;
-    }
+.heading{
+  text-align:center;
+  margin-bottom:50px;
+}
 
-    .reviewBox{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:25px;
-    }
+.heading h2{
+  font-size:36px;
+  color:#005288;
+  margin-bottom:15px;
+}
 
-    .review{
-      background:#f7f7f7;
-      padding:30px;
-      border-radius:14px;
-      box-shadow:0 3px 10px rgba(0,0,0,0.08);
-    }
+.heading p{
+  max-width:650px;
+  margin:auto;
+  line-height:150%;
+}
 
-    .review p{
-      line-height:150%;
-      margin-bottom:18px;
-    }
+.services{
+  padding:90px 7%;
+  background:#fafafa;
+}
 
-    .review h4{
-      color:#005288;
-    }
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+}
 
-    .contact{
-      padding:90px 7%;
-      background:#f3f4f6;
-    }
+.card{
+  background:#ffffff;
+  padding:35px 25px;
+  border-radius:14px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+  border-bottom:4px solid #c2cd23;
+  animation:fadeUp 1s ease;
+  transition:.4s;
+}
 
-    .contactArea{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:40px;
-      align-items:center;
-    }
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.12);
+}
 
-    .text h2{
-      font-size:36px;
-      color:#005288;
-      margin-bottom:15px;
-    }
+.card h3{
+  color:#005288;
+  margin-bottom:18px;
+  font-size:28px;
+}
 
-    .text p{
-      line-height:150%;
-    }
+.card p{
+  line-height:150%;
+}
 
-    form{
-      background:#fff;
-      padding:35px;
-      border-radius:16px;
-      box-shadow:0 5px 12px rgba(0,0,0,0.08);
-    }
+.process{
+  padding:90px 7%;
+  background:#ffffff;
+}
 
-    form input,
-    form textarea{
-      width:100%;
-      padding:14px;
-      margin-bottom:18px;
-      border:1px solid #ddd;
-      border-radius:7px;
-      outline:none;
-    }
+.processBox{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+}
 
-    form textarea{
-      height:130px;
-      resize:none;
-    }
+.processCard{
+  background:#f7f7f7;
+  padding:35px;
+  border-radius:14px;
+  text-align:center;
+  animation:zoomIn 1s ease;
+  transition:.4s;
+}
 
-    form button{
-      background:#004a77;
-      color:#fff;
-      border:none;
-      padding:14px 28px;
-      border-radius:8px;
-      cursor:pointer;
-      transition:.2s;
-    }
+.processCard:hover{
+  transform:translateY(-8px);
+  background:#005288;
+  color:#ffffff;
+}
 
-    form button:hover{
-      background:#005288;
-    }
+.processCard:hover h4{
+  color:#ffffff;
+}
 
-    footer{
-      background:#005288;
-      text-align:center;
-      padding:22px;
-    }
+.processCard h3{
+  font-size:42px;
+  color:#c2cd23;
+  margin-bottom:15px;
+}
 
-    footer p{
-      color:#fff;
-      font-size:16px;
-    }
+.processCard h4{
+  color:#005288;
+  margin-bottom:15px;
+}
 
-    @media(max-width:900px){
+.features{
+  padding:90px 7%;
+  background:#f3f4f6;
+}
 
-      header{
-        flex-direction:column;
-        gap:15px;
-      }
+.featureGrid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:25px;
+}
 
-      .hero{
-        flex-direction:column;
-        text-align:center;
-      }
+.featureCard{
+  background:#ffffff;
+  padding:35px;
+  border-radius:14px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+  border-left:5px solid #005288;
+  animation:fadeUp 1s ease;
+  transition:.4s;
+}
 
-      .buttons{
-        justify-content:center;
-      }
+.featureCard:hover{
+  transform:translateY(-8px);
+}
 
-      .cards,
-      .reviewBox,
-      .contactArea{
-        grid-template-columns:1fr;
-      }
+.featureCard h3{
+  color:#005288;
+  margin-bottom:15px;
+}
 
-      .left h1{
-        font-size:48px;
-      }
+.team{
+  padding:90px 7%;
+  background:#ffffff;
+}
 
-    }
+.teamBox{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+}
 
-  </style>
+.teamCard{
+  background:#f7f7f7;
+  border-radius:14px;
+  overflow:hidden;
+  text-align:center;
+  animation:zoomIn 1s ease;
+  transition:.4s;
+}
 
+.teamCard:hover{
+  transform:translateY(-10px);
+}
+
+.teamCard img{
+  width:100%;
+  height:280px;
+  object-fit:cover;
+}
+
+.teamCard h3{
+  margin-top:20px;
+  color:#005288;
+}
+
+.teamCard p{
+  padding:10px 20px 25px;
+}
+
+.stats{
+  padding:80px 7%;
+  background:#005288;
+}
+
+.statBox{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:25px;
+}
+
+.statCard{
+  text-align:center;
+  color:#ffffff;
+  animation:fadeUp 1s ease;
+}
+
+.statCard h2{
+  font-size:36px;
+  margin-bottom:10px;
+}
+
+.pricing{
+  padding:90px 7%;
+  background:#ffffff;
+}
+
+.pricingBox{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+}
+
+.priceCard{
+  background:#f7f7f7;
+  padding:40px 30px;
+  border-radius:16px;
+  text-align:center;
+  animation:fadeUp 1s ease;
+  transition:.4s;
+}
+
+.priceCard:hover{
+  transform:translateY(-10px);
+}
+
+.priceCard h3{
+  color:#005288;
+  margin-bottom:20px;
+}
+
+.priceCard h2{
+  font-size:36px;
+  color:#c2cd23;
+  margin-bottom:25px;
+}
+
+.priceCard p{
+  margin-bottom:15px;
+}
+
+.priceCard a{
+  display:inline-block;
+  margin-top:20px;
+  background:#005288;
+  color:#ffffff;
+  text-decoration:none;
+  padding:14px 28px;
+  border-radius:8px;
+}
+
+.active{
+  background:#005288;
+  color:#ffffff;
+}
+
+.active h3,
+.active h2{
+  color:#ffffff;
+}
+
+.active a{
+  background:#c2cd23;
+}
+
+.reviews{
+  padding:90px 7%;
+  background:#ffffff;
+}
+
+.reviewBox{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+}
+
+.review{
+  background:#f7f7f7;
+  padding:30px;
+  border-radius:14px;
+  animation:fadeUp 1s ease;
+  transition:.4s;
+}
+
+.review:hover{
+  transform:translateY(-8px);
+}
+
+.review p{
+  line-height:150%;
+  margin-bottom:18px;
+}
+
+.review h4{
+  color:#005288;
+}
+
+.newsletter{
+  padding:90px 7%;
+  background:#f3f4f6;
+}
+
+.newsletterContent{
+  max-width:800px;
+  margin:auto;
+  text-align:center;
+}
+
+.newsletterContent h2{
+  font-size:36px;
+  color:#005288;
+  margin-bottom:15px;
+}
+
+.newsletterContent p{
+  margin-bottom:30px;
+}
+
+.newsForm{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.newsForm input{
+  width:400px;
+  padding:15px;
+  border:1px solid #ddd;
+  border-radius:8px;
+}
+
+.newsForm button{
+  background:#c2cd23;
+  color:#ffffff;
+  width: 130px;
+  height: 45px;
+  border:none;
+  padding:15px 28px;
+  border-radius:8px;
+  cursor:pointer;
+  transition:.4s;
+}
+
+.newsForm button:hover{
+  background:#a8b51d;
+}
+
+.contact{
+  padding:90px 7%;
+  background:#ffffff;
+}
+
+.contactArea{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+}
+
+.text h2{
+  font-size:36px;
+  color:#005288;
+  margin-bottom:15px;
+}
+
+form{
+  background:#f7f7f7;
+  padding:35px;
+  border-radius:14px;
+}
+
+form input,
+form textarea{
+  width:100%;
+  padding:14px;
+  margin-bottom:18px;
+  border:1px solid #ddd;
+  border-radius:8px;
+}
+
+form textarea{
+  height:130px;
+  resize:none;
+}
+
+form button{
+  background:#005288;
+  color:#ffffff;
+  border:none;
+  padding:14px 30px;
+  border-radius:8px;
+  cursor:pointer;
+  transition:.4s;
+}
+
+form button:hover{
+  background:#003b63;
+}
+
+footer{
+  background:#000000;
+  color:#ffffff;
+  padding:70px 7% 30px;
+}
+
+.footerGrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:40px;
+}
+
+.footerGrid h3{
+  margin-bottom:20px;
+  color:#ffffff;
+}
+
+.footerGrid p,
+.footerGrid a{
+  color:#cccccc;
+  text-decoration:none;
+  line-height:150%;
+}
+
+.footerBottom{
+  text-align:center;
+  margin-top:40px;
+  border-top:1px solid #333;
+  padding-top:20px;
+}
+
+@media(max-width:900px){
+
+  header{
+    flex-direction:column;
+    gap:20px;
+  }
+
+  .hero{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .buttons{
+    justify-content:center;
+  }
+
+  .cards,
+  .processBox,
+  .featureGrid,
+  .teamBox,
+  .statBox,
+  .pricingBox,
+  .reviewBox,
+  .contactArea,
+  .footerGrid{
+    grid-template-columns:1fr;
+  }
+
+  .left h1{
+    font-size:48px;
+  }
+
+}
+
+</style>
 </head>
+
 <body>
+<header>
 
-  <header>
+<div class="logo">Evo Systems</div>
 
-    <div class="logo">Evo Systems </div>
+<nav>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#pricing">Pricing</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
 
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#">Work</a></li>
-        <li><a href="#contactus">Contact</a></li>
-      </ul>
-    </nav>
+</header>
 
-  </header>
+<section class="hero">
 
-  <section class="hero" id="home">
+<div class="left">
 
-    <div class="left">
+<h1>Build Better Websites For Your Business</h1>
 
-      <h1>Build Better Websites For Your Business</h1>
+<p>
+We create simple and modern websites that help businesses grow online.
+</p>
 
-      <p>
-        We create simple and modern websites that help businesses grow online.
-        Clean layouts, responsive design, and smooth user experience all in one place.
-      </p>
+<div class="buttons">
 
-      <div class="buttons">
-        <a href="#" class="btn1">Start Now</a>
-        <a href="#" class="btn2">Explore More</a>
-      </div>
+<a href="#contact" class="btn1">Start Now</a>
 
-    </div>
+<a href="#services" class="btn2">Explore More</a>
 
-    <div class="right">
-      <img src="img/image2.jpg" alt="office image">
-    </div>
+</div>
 
-  </section>
+</div>
 
-  <section class="services" id="services">
+<div class="right">
 
-    <div class="heading">
-      <h2>Our Services</h2>
+<img src="img/image2.jpg" alt="image">
 
-      <p>
-        From website design to branding, we help businesses create a better
-        online presence with modern and user-friendly designs.
-      </p>
-    </div>
+</div>
 
-    <div class="cards">
+</section>
 
-      <div class="card">
-        <h3>Website Design</h3>
-        <p>
-          Clean and attractive layouts designed for better user experience and engagement.
-        </p>
-      </div>
+<section class="services" id="services">
 
-      <div class="card">
-        <h3>Development</h3>
-        <p>
-          Responsive websites built with modern technologies and optimized performance.
-        </p>
-      </div>
+<div class="heading">
 
-      <div class="card">
-        <h3>Branding</h3>
-        <p>
-          Create a strong brand identity with colors, typography, and creative visuals.
-        </p>
-      </div>
+<h2>Our Services</h2>
 
-    </div>
+<p>
+Modern and responsive services for growing businesses.
+</p>
 
-  </section>
+</div>
 
-  <section class="banner">
+<div class="cards">
 
-    <h2>Let’s Create Something Great</h2>
+<div class="card">
+<h3>Website Design</h3>
+<p>Modern layouts with responsive structure.</p>
+</div>
 
-    <p>
-      Looking for a modern website for your business or startup?
-      We’d love to work with you.
-    </p>
+<div class="card">
+<h3>Development</h3>
+<p>Fast and optimized websites with clean code.</p>
+</div>
 
-    <a href="#">Get Started</a>
+<div class="card">
+<h3>Branding</h3>
+<p>Creative branding with modern visuals.</p>
+</div>
 
-  </section>
+</div>
 
-  <section class="reviews">
+</section>
 
-    <div class="heading">
+<section class="process" id="process">
 
-      <h2>What Clients Say</h2>
+<div class="heading">
 
-      <p>
-        A few words from people we’ve worked with recently.
-      </p>
+<h2>Our Process</h2>
 
-    </div>
+<p>Simple steps for better project delivery.</p>
 
-    <div class="reviewBox">
+</div>
 
-      <div class="review">
-        <p>
-          “Very clean design and smooth experience. The website looked professional and modern.”
-        </p>
+<div class="processBox">
 
-        <h4>- Rahul Mehta</h4>
-      </div>
+<div class="processCard">
+<h3>01</h3>
+<h4>Planning</h4>
+<p>Understanding project goals.</p>
+</div>
 
-      <div class="review">
-        <p>
-          “The team delivered everything on time and the responsiveness was excellent.”
-        </p>
+<div class="processCard">
+<h3>02</h3>
+<h4>Design</h4>
+<p>Creating modern UI layouts.</p>
+</div>
 
-        <h4>- Priya Shah</h4>
-      </div>
+<div class="processCard">
+<h3>03</h3>
+<h4>Launch</h4>
+<p>Testing and launching websites.</p>
+</div>
 
-      <div class="review">
-        <p>
-          “Loved the simple UI and overall design quality. Really happy with the final result.”
-        </p>
+</div>
 
-        <h4>- Kevin Thomas</h4>
-      </div>
+</section>
 
-    </div>
+<section class="features" id="features">
 
-  </section>
+<div class="heading">
 
-  <section class="contact" id="contactus">
-    
-    <div class="contactArea">
+<h2>Why Choose Us</h2>
 
-      <div class="text">
+<p>Better design and smooth user experience.</p>
 
-        <h2>Contact Us</h2>
+</div>
 
-        <p>
-          Have an idea in mind? Send us a message and we’ll get back to you soon.
-        </p>
+<div class="featureGrid">
 
-      </div>
+<div class="featureCard">
+<h3>Responsive Design</h3>
+<p>Mobile friendly layouts for all devices.</p>
+</div>
 
-      <form>
+<div class="featureCard">
+<h3>Fast Loading</h3>
+<p>Optimized performance and speed.</p>
+</div>
 
-        <input type="text" placeholder="Enter your name">
+<div class="featureCard">
+<h3>Clean UI</h3>
+<p>Modern and professional interface.</p>
+</div>
 
-        <input type="email" placeholder="Enter your email">
+<div class="featureCard">
+<h3>Support</h3>
+<p>Quick support and project guidance.</p>
+</div>
 
-        <textarea placeholder="Write your message"></textarea>
+</div>
 
-        <button type="submit">Send</button>
+</section>
 
-      </form>
+<section class="team" id="team">
 
-    </div>
+<div class="heading">
 
-  </section>
+<h2>Our Team</h2>
 
-  <footer>
-    <p>&copy; 2026 EvoSystems. All Rights Reserved.</p>
-  </footer>
+<p>Creative people behind our projects.</p>
+
+</div>
+
+<div class="teamBox">
+
+<div class="teamCard">
+<img src="img/IMAGE 5.jpg" alt="">
+<h3>David Miller</h3>
+<p>Designer</p>
+</div>
+
+<div class="teamCard">
+<img src="img/IMAGES 7.png" alt="">
+<h3>Sarah Wilson</h3>
+<p>Developer</p>
+</div>
+
+<div class="teamCard">
+<img src="img/IMAGE 6.jpg" alt="">
+<h3>James Carter</h3>
+<p>Creative Head</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="stats" id="stats">
+
+<div class="statBox">
+
+<div class="statCard">
+<h2>250+</h2>
+<p>Projects</p>
+</div>
+
+<div class="statCard">
+<h2>120+</h2>
+<p>Clients</p>
+</div>
+
+<div class="statCard">
+<h2>8+</h2>
+<p>Years</p>
+</div>
+
+<div class="statCard">
+<h2>24/7</h2>
+<p>Support</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="pricing" id="pricing">
+
+<div class="heading">
+
+<h2>Pricing Plans</h2>
+
+<p>Choose a plan for your business.</p>
+
+</div>
+
+<div class="pricingBox">
+
+<div class="priceCard">
+<h3>Basic</h3>
+<h2>$199</h2>
+<p>Landing Page</p>
+<p>Responsive Layout</p>
+<a href="#">Choose</a>
+</div>
+
+<div class="priceCard active">
+<h3>Standard</h3>
+<h2>$399</h2>
+<p>Business Website</p>
+<p>Priority Support</p>
+<a href="#">Choose</a>
+</div>
+
+<div class="priceCard">
+<h3>Premium</h3>
+<h2>$699</h2>
+<p>Custom Website</p>
+<p>Full Support</p>
+<a href="#">Choose</a>
+</div>
+
+</div>
+
+</section>
+
+<section class="reviews" id="reviews">
+
+<div class="heading">
+
+<h2>Client Reviews</h2>
+
+<p>Feedback from our clients.</p>
+
+</div>
+
+<div class="reviewBox">
+
+<div class="review">
+<p>“Very clean and professional design.”</p>
+<h4>- Rahul Mehta</h4>
+</div>
+
+<div class="review">
+<p>“Responsive layout and smooth experience.”</p>
+<h4>- Priya Shah</h4>
+</div>
+
+<div class="review">
+<p>“Loved the modern design quality.”</p>
+<h4>- Kevin Thomas</h4>
+</div>
+
+</div>
+
+</section>
+
+<section class="newsletter" id="newsletter">
+
+<div class="newsletterContent">
+
+<h2>Subscribe Newsletter</h2>
+
+<p>Get updates and offers directly in your inbox.</p>
+
+<form class="newsForm">
+
+<input type="email" placeholder="Enter your email">
+
+<button type="submit">Subscribe</button>
+
+</form>
+
+</div>
+
+</section>
+
+<section class="contact" id="contact">
+
+<div class="contactArea">
+
+<div class="text">
+
+<h2>Contact Us</h2>
+
+<p>
+Have an idea? Send us a message today.
+</p>
+
+</div>
+
+<form>
+
+<input type="text" placeholder="Your Name">
+
+<input type="email" placeholder="Your Email">
+
+<textarea placeholder="Your Message"></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+</div>
+
+</section>
+
+<footer>
+
+<div class="footerGrid">
+
+<div>
+<h3>Evo Systems</h3>
+<p>
+Modern website solutions for businesses and startups.
+</p>
+</div>
+
+<div>
+<h3>Quick Links</h3>
+<p><a href="#">Home</a></p>
+<p><a href="#">Services</a></p>
+<p><a href="#">Pricing</a></p>
+</div>
+
+<div>
+<h3>Services</h3>
+<p>Website Design</p>
+<p>Development</p>
+<p>Branding</p>
+</div>
+
+<div>
+<h3>Contact</h3>
+<p>info@evosystems.com</p>
+<p>+91 9876543210</p>
+<p>New York, USA</p>
+</div>
+
+</div>
+
+<div class="footerBottom">
+
+<p>© 2026 Evo Systems. All Rights Reserved.</p>
+
+</div>
+
+</footer>
 
 </body>
 </html>
