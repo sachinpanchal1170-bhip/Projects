@@ -14,95 +14,208 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background: #f4f4f4;
             color: #555555;
-            line-height: 230%;
+            line-height: 150%;
+            overflow-x: hidden;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(80px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fadeUp {
+            opacity: 0;
+            animation: fadeUp 1s ease forwards;
+        }
+
+        .delay1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay3 {
+            animation-delay: 0.6s;
+        }
+
+        .delay4 {
+            animation-delay: 0.8s;
+        }
+
+        .delay5 {
+            animation-delay: 1s;
+        }
+
+        @keyframes floatImage {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         header {
-            width: 100%;
-            background: #fff;
-            padding: 18px 6%;
+            background: linear-gradient(to right, #005288, #0b6aa8);
+            padding: 20px 7%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
         }
 
         nav ul {
             display: flex;
-            justify-content: center;
             list-style: none;
             gap: 30px;
         }
 
         nav ul li a {
             text-decoration: none;
-            color: #555555;
-            font-size: 15px;
-            transition: .2s;
+            color: #ffffff;
+            font-size: 16px;
+            position: relative;
+            transition: .4s;
+        }
+
+        nav ul li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background: #c2cd23;
+            transition: .4s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
         }
 
         nav ul li a:hover {
-            color: #005288;
+            color: #c2cd23;
         }
 
         #home {
-            height: 100vh;
-            background: linear-gradient(rgba(0, 76, 120, 0.75), rgba(0, 76, 120, 0.75)),
-            url("img/group.jpg");
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             align-items: center;
-            text-align: center;
-            color: #fff;
-            padding: 20px;
+            gap: 50px;
+            padding: 80px 7%;
+            background: #ffffff;
         }
 
-        #home h1 {
+        .homeText h1 {
             font-size: 48px;
-            max-width: 850px;
-            margin-bottom: 20px;
+            color: #005288;
             line-height: 125%;
+            margin-bottom: 20px;
         }
 
-        #home p {
-            max-width: 600px;
-            margin-bottom: 30px;
+        .homeText p {
             font-size: 16px;
+            margin-bottom: 30px;
+            max-width: 550px;
         }
 
         .btn {
+            display: inline-block;
             text-decoration: none;
             background: #c2cd23;
-            color: #fff;
+            color: #ffffff;
             padding: 14px 35px;
-            border-radius: 7px;
-            transition: .3s;
+            border-radius: 6px;
+            transition: .4s;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: .5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn:hover {
-            background: #aeb71f;
+            background: #aab51d;
+            transform: translateY(-3px);
+        }
+
+        .homeImage img {
+            width: 100%;
+            border-radius: 16px;
+            animation: floatImage 4s ease-in-out infinite;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            transition: .5s;
+        }
+
+        .homeImage img:hover {
+            transform: scale(1.03);
         }
 
         section {
-            padding: 85px 7%;
+            padding: 90px 7%;
         }
 
         .title {
             text-align: center;
-            margin-bottom: 45px;
+            margin-bottom: 50px;
         }
 
         .title h2 {
             font-size: 36px;
             color: #005288;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
         }
+
 
         .title p {
             max-width: 700px;
@@ -110,126 +223,422 @@
         }
 
         #about {
-            background: #fff;
+            background: #f4f4f4;
         }
 
-        .aboutText {
-            max-width: 850px;
-            margin: auto;
-            text-align: center;
-            line-height: 150%;
+        .aboutBox {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            align-items: center;
+        }
+
+        .aboutBox img {
+            width: 100%;
+            border-radius: 14px;
+            transition: .5s;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .aboutBox img:hover {
+            transform: scale(1.04);
+        }
+
+        .aboutText p {
+            margin-bottom: 18px;
+            font-size: 16px;
         }
 
         #services {
-            background: #fafafa;
+            background: #ffffff;
         }
 
         .serviceBox {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 25px;
-            margin-top: 50px;
+            margin-top: 40px;
         }
 
         .service {
-            background: #fff;
-            padding: 30px 25px;
+            background: #f4f4f4;
+            padding: 35px 25px;
             border-radius: 12px;
+            text-align: center;
+            transition: .4s ease;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-            border-top: 4px solid #005288;
-            transition: .2s;
         }
 
         .service:hover {
-            transform: translateY(-5px);
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
 
         .service h3 {
-            margin-bottom: 15px;
             color: #005288;
+            margin-bottom: 15px;
             font-size: 28px;
         }
 
-        .service p {
-            line-height: 150%;
+        #choose {
+            background: #f4f4f4;
+        }
+
+        .chooseBox {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .chooseCard {
+            background: #ffffff;
+            padding: 35px 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: .4s ease;
+        }
+
+        .chooseCard:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .chooseCard h3 {
+            color: #005288;
+            margin-bottom: 15px;
+        }
+
+        #testimonials {
+            background: #ffffff;
+        }
+
+        .testimonialBox {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .testimonialCard {
+            background: #f4f4f4;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: .4s ease;
+        }
+
+        .testimonialCard:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .testimonialCard p {
+            margin-bottom: 20px;
+        }
+
+        .testimonialCard h4 {
+            color: #005288;
+        }
+
+        #portfolio {
+            background: #f4f4f4;
+        }
+
+        .portfolioBox {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .portfolioCard {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: .4s ease;
+        }
+
+        .portfolioCard:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .portfolioCard img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .portfolioCard:hover img {
+            transform: scale(1.08);
+        }
+
+        .portfolioCard h3 {
+            padding: 20px;
+            color: #005288;
+            text-align: center;
+        }
+
+        #faq {
+            background: #ffffff;
+        }
+
+        .faqBox {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .faqItem {
+            background: #f4f4f4;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: .4s;
+        }
+
+        .faqItem:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        .faqItem h3 {
+            color: #005288;
+            margin-bottom: 10px;
+        }
+
+        #stats {
+            background: #005288;
+        }
+
+        .statsBox {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat {
+            transition: .4s;
+        }
+
+        .stat:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat h2 {
+            color: #c2cd23;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .stat p {
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        #cta {
+            background: #ffffff;
+            text-align: center;
+        }
+
+        #cta h2 {
+            font-size: 36px;
+            color: #005288;
+            margin-bottom: 20px;
+        }
+
+        #cta p {
+            max-width: 700px;
+            margin: auto auto 30px;
         }
 
         #contact {
-            background: #fff;
+            background: #f4f4f4;
         }
 
-        .contactForm {
+        form {
             max-width: 700px;
-            margin: 40px auto 0;
-            background: #f7f7f7;
-            padding: 35px;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            margin: auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 14px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: .4s;
         }
 
-        .contactForm input,
-        .contactForm textarea {
+        form:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        form input,
+        form textarea {
             width: 100%;
             padding: 14px;
-            margin-bottom: 18px;
-            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            border: 1px solid #dddddd;
             border-radius: 6px;
+            font-size: 15px;
+            transition: .3s;
+        }
+
+        form input:focus,
+        form textarea:focus {
+            border-color: #005288;
             outline: none;
+            box-shadow: 0 0 10px rgba(0, 82, 136, 0.15);
         }
 
-        .contactForm textarea {
-            height: 130px;
+        form textarea {
             resize: none;
+            height: 140px;
         }
 
-        .contactForm button {
+        form button {
             background: #005288;
-            color: #fff;
+            color: #ffffff;
             border: none;
             padding: 14px 30px;
             border-radius: 6px;
             cursor: pointer;
-            transition: .2s;
+            transition: .4s;
+            font-size: 16px;
         }
 
-        .contactForm button:hover {
-            background: #003657;
+        form button:hover {
+            background: #00395f;
+            transform: translateY(-3px);
         }
 
         footer {
-            background: #005288;
-            text-align: center;
-            padding: 22px;
+            background: #000000;
+            color: #ffffff;
+            padding: 70px 7% 20px;
         }
 
-        footer p {
-            color: #fff;
-            font-size: 16px;
+        .footerContainer {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footerLogo {
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        .footerBox h3 {
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .footerBox p {
+            margin-bottom: 15px;
+            line-height: 150%;
+            color: #dddddd;
+        }
+
+        .footerBox ul {
+            list-style: none;
+        }
+
+        .footerBox ul li {
+            margin-bottom: 14px;
+        }
+
+        .footerBox ul li a {
+            text-decoration: none;
+            color: #dddddd;
+            transition: .3s;
+        }
+
+        .footerBox ul li a:hover {
+            color: #c2cd23;
+            padding-left: 6px;
+        }
+
+        .subscribeBox {
+            margin-top: 20px;
+        }
+
+        .subscribeBox input {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        .subscribeBox button {
+            background: #005288;
+            color: #ffffff;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: .4s;
+        }
+
+        .subscribeBox button:hover {
+            background: #00395f;
+            transform: translateY(-3px);
+        }
+
+        .footerBottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .footerBottom p {
+            color: #cccccc;
         }
 
         @media(max-width:900px) {
 
+            nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+
             nav ul {
-                gap: 18px;
                 flex-wrap: wrap;
+                justify-content: center;
             }
 
-            #home h1 {
-                font-size: 48px;
-            }
-
-            .serviceBox {
+            #home,
+            .aboutBox,
+            .serviceBox,
+            .chooseBox,
+            .testimonialBox,
+            .portfolioBox,
+            .statsBox,
+            .footerContainer {
                 grid-template-columns: 1fr;
+            }
+
+            #home {
+                text-align: center;
+            }
+
+            .homeText p {
+                margin: auto auto 30px;
+            }
+
+            .homeText h1 {
+                font-size: 40px;
             }
 
             section {
                 padding: 70px 20px;
             }
-
-            .contactForm {
-                padding: 25px;
-            }
-
         }
     </style>
 
@@ -237,102 +646,378 @@
 
 <body>
 
-    <header>
+    <header class="fadeUp">
 
         <nav>
+
+            <div class="logo">Nova Networks</div>
+
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+
         </nav>
 
     </header>
 
+    <!-- Hero Section -->
+
     <section id="home">
 
-        <h1>Grow Your Business With A Better Online Presence</h1>
+        <div class="homeText fadeUp">
 
-        <p>
-            We help brands and businesses build modern websites with clean design
-            and smooth user experience.
-        </p>
+            <h1>Modern Solutions For Growing Businesses</h1>
 
-        <a href="#services" class="btn">View Services</a>
+            <p>
+                We create professional websites and digital solutions that help businesses
+                improve their online presence and connect with more customers.
+            </p>
+
+            <a href="#services" class="btn">Explore Services</a>
+
+        </div>
+
+        <div class="homeImage fadeUp">
+
+            <img src="img/group.jpg" alt="Business Team">
+
+        </div>
 
     </section>
+
+    <!-- About -->
 
     <section id="about">
 
-        <div class="title">
-            <h2>Who We Are</h2>
+        <div class="title fadeUp">
+
+            <h2>About Us</h2>
+
+            <p>
+                We focus on creating modern and user-friendly digital experiences.
+            </p>
+
         </div>
 
-        <div class="aboutText">
-            <p>
-                We are a creative team focused on building modern and user-friendly websites.
-                Our goal is to help businesses improve their online presence with responsive
-                layouts and simple designs that actually work.
-            </p>
+        <div class="aboutBox fadeUp">
+
+            <img src="img/IMAGE 4.png" alt="About Image">
+
+            <div class="aboutText">
+
+                <p>
+                    Our team helps businesses build responsive and visually attractive websites
+                    using clean layouts and proper structure.
+                </p>
+
+                <p>
+                    We believe in simple designs, better performance, and smooth user experience
+                    for every project.
+                </p>
+
+            </div>
+
         </div>
 
     </section>
 
+    <!-- Services -->
+
     <section id="services">
 
-        <div class="title">
+        <div class="title fadeUp">
 
-            <h2>What We Do</h2>
+            <h2>Our Services</h2>
 
             <p>
-                We provide design and development services for startups,
-                businesses, and personal brands.
+                We provide modern web solutions for startups and businesses.
             </p>
 
         </div>
 
         <div class="serviceBox">
 
-            <div class="service">
+            <div class="service fadeUp delay1">
+
                 <h3>Web Design</h3>
 
                 <p>
-                    Modern and clean website layouts focused on better user experience.
+                    Clean and responsive layouts with modern UI design.
                 </p>
+
             </div>
 
-            <div class="service">
+            <div class="service fadeUp delay2">
+
                 <h3>Development</h3>
 
                 <p>
-                    Responsive websites built with proper structure and optimized performance.
+                    Fast and structured websites built with proper coding standards.
                 </p>
+
             </div>
 
-            <div class="service">
+            <div class="service fadeUp delay3">
+
                 <h3>Branding</h3>
 
                 <p>
-                    Creative visuals and branding elements to improve business identity.
+                    Creative branding solutions to improve business identity.
                 </p>
+
             </div>
 
         </div>
 
     </section>
 
-    <section id="contact">
+    <!-- Why Choose Us -->
 
-        <div class="title">
-            <h2>Get In Touch</h2>
+    <section id="choose">
+
+        <div class="title fadeUp">
+
+            <h2>Why Choose Us</h2>
 
             <p>
-                Have a project idea or want to work with us? Send a message anytime.
+                We provide modern designs, better performance, and responsive layouts.
             </p>
+
         </div>
 
-        <form class="contactForm">
+        <div class="chooseBox">
+
+            <div class="chooseCard fadeUp delay1">
+
+                <h3>Responsive Design</h3>
+
+                <p>
+                    Websites that work smoothly on desktop and mobile devices.
+                </p>
+
+            </div>
+
+            <div class="chooseCard fadeUp delay2">
+
+                <h3>Modern UI</h3>
+
+                <p>
+                    Clean and professional layouts focused on user experience.
+                </p>
+
+            </div>
+
+            <div class="chooseCard fadeUp delay3">
+
+                <h3>Fast Performance</h3>
+
+                <p>
+                    Optimized website structure for better loading speed.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Testimonials -->
+
+    <section id="testimonials">
+
+        <div class="title fadeUp">
+
+            <h2>Client Testimonials</h2>
+
+        </div>
+
+        <div class="testimonialBox">
+
+            <div class="testimonialCard fadeUp delay1">
+
+                <p>
+                    “Nova Networks created a modern and responsive website for our business.
+                    The design quality and performance were excellent.”
+                </p>
+
+                <h4>- Michael Johnson</h4>
+
+            </div>
+
+            <div class="testimonialCard fadeUp delay2">
+
+                <p>
+                    “Their team delivered the project on time with a clean and professional layout.
+                    Highly recommended.”
+                </p>
+
+                <h4>- Sarah Williams</h4>
+
+            </div>
+
+            <div class="testimonialCard fadeUp delay3">
+
+                <p>
+                    “Very smooth experience from start to finish. The website looks modern
+                    and works perfectly on all devices.”
+                </p>
+
+                <h4>- David Miller</h4>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Portfolio -->
+
+    <section id="portfolio">
+
+        <div class="title fadeUp">
+
+            <h2>Our Portfolio</h2>
+
+        </div>
+
+        <div class="portfolioBox">
+
+            <div class="portfolioCard fadeUp delay1">
+
+                <img src="img/IMAGE 1.png" alt="Portfolio">
+
+                <h3>Corporate Website</h3>
+
+            </div>
+
+            <div class="portfolioCard fadeUp delay2">
+
+                <img src="img/IMAGE 2.png" alt="Portfolio">
+
+                <h3>Business Branding</h3>
+
+            </div>
+
+            <div class="portfolioCard fadeUp delay3">
+
+                <img src="img/IMAGE 3.png" alt="Portfolio">
+
+                <h3>E-Commerce Design</h3>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FAQ -->
+
+    <section id="faq">
+
+        <div class="title fadeUp">
+
+            <h2>Frequently Asked Questions</h2>
+
+        </div>
+
+        <div class="faqBox">
+
+            <div class="faqItem fadeUp delay1">
+
+                <h3>How long does a project take?</h3>
+
+                <p>
+                    Most projects are completed within 1-2 weeks depending on requirements.
+                </p>
+
+            </div>
+
+            <div class="faqItem fadeUp delay2">
+
+                <h3>Do you create responsive websites?</h3>
+
+                <p>
+                    Yes, all our websites are fully responsive and mobile-friendly.
+                </p>
+
+            </div>
+
+            <div class="faqItem fadeUp delay3">
+
+                <h3>Can I customize the design?</h3>
+
+                <p>
+                    Yes, every design is customized according to business requirements.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Stats -->
+
+    <section id="stats">
+
+        <div class="statsBox">
+
+            <div class="stat fadeUp delay1">
+
+                <h2>250+</h2>
+
+                <p>Projects Completed</p>
+
+            </div>
+
+            <div class="stat fadeUp delay2">
+
+                <h2>120+</h2>
+
+                <p>Happy Clients</p>
+
+            </div>
+
+            <div class="stat fadeUp delay3">
+
+                <h2>5+</h2>
+
+                <p>Years Experience</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CTA -->
+
+    <section id="cta" class="fadeUp delay1">
+
+        <h2>Ready To Grow Your Business?</h2>
+
+        <p>
+            Let’s create a modern website that helps your business stand out online.
+        </p>
+
+        <a href="#contact" class="btn">Get Started</a>
+
+    </section>
+
+    <!-- Contact -->
+
+    <section id="contact">
+
+        <div class="title fadeUp">
+
+            <h2>Contact Us</h2>
+
+        </div>
+
+        <form class="fadeUp delay1">
 
             <input type="text" placeholder="Your Name">
 
@@ -346,8 +1031,86 @@
 
     </section>
 
-    <footer>
-        <p>&copy; 2024 NovaNetworks. All Rights Reserved.</p>
+    <!-- Footer -->
+
+    <footer class="fadeUp">
+
+        <div class="footerContainer">
+
+            <div class="footerBox">
+
+                <h2 class="footerLogo">Nova Networks</h2>
+
+                <p>
+                    107 North Main Street,<br>
+                    Texas 77964,<br>
+                    United States
+                </p>
+
+                <p>Email: info@novanetworks.com</p>
+
+                <p>Phone: +1 987 654 3210</p>
+
+            </div>
+
+            <div class="footerBox">
+
+                <h3>Quick Links</h3>
+
+                <ul>
+
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Testimonials</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Contact</a></li>
+
+                </ul>
+
+            </div>
+
+            <div class="footerBox">
+
+                <h3>Our Services</h3>
+
+                <ul>
+
+                    <li><a href="#">Web Design</a></li>
+                    <li><a href="#">Development</a></li>
+                    <li><a href="#">Branding</a></li>
+                    <li><a href="#">SEO Services</a></li>
+                    <li><a href="#">Marketing</a></li>
+
+                </ul>
+
+            </div>
+
+            <div class="footerBox">
+
+                <h3>Stay Connected</h3>
+
+                <p>
+                    Subscribe to receive updates and promotional offers.
+                </p>
+
+                <div class="subscribeBox">
+
+                    <input type="email" placeholder="Enter Email">
+
+                    <button>Subscribe</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footerBottom">
+
+            <p>&copy; 2024 Nova Networks. All Rights Reserved.</p>
+
+        </div>
+
     </footer>
 
 </body>
