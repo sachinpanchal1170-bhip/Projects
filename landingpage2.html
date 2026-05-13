@@ -1,1025 +1,1781 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Evo Systems</title>
-
-<style>
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial, Helvetica, sans-serif;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  background:#f5f5f5;
-  color:#555555;
-  overflow-x:hidden;
-}
-
-@keyframes fadeUp{
-  from{
-    opacity:0;
-    transform:translateY(60px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-@keyframes fadeLeft{
-  from{
-    opacity:0;
-    transform:translateX(-60px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateX(0);
-  }
-}
-
-@keyframes fadeRight{
-  from{
-    opacity:0;
-    transform:translateX(60px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateX(0);
-  }
-}
-
-@keyframes zoomIn{
-  from{
-    opacity:0;
-    transform:scale(.8);
-  }
-
-  to{
-    opacity:1;
-    transform:scale(1);
-  }
-}
-
-header{
-  width:100%;
-  background:linear-gradient(to right, #005288, #0b6aa8);
-  padding:20px 7%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  box-shadow:0 2px 8px rgba(0,0,0,0.08);
-  position:sticky;
-  top:0;
-  z-index:1000;
-}
-
-.logo{
-  font-size:28px;
-  font-weight:700;
-  color:#ffffff;
-}
-
-nav ul{
-  display:flex;
-  list-style:none;
-  gap:25px;
-}
-
-nav ul li a{
-  text-decoration:none;
-  color:#ffffff;
-  transition:.4s;
-  position:relative;
-}
-
-nav ul li a::after{
-  content:'';
-  position:absolute;
-  left:0;
-  bottom:-6px;
-  width:0;
-  height:2px;
-  background:#c2cd23;
-  transition:.4s;
-}
-
-nav ul li a:hover::after{
-  width:100%;
-}
-
-nav ul li a:hover{
-  color:#c2cd23;
-}
-
-.hero{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:50px;
-  padding:90px 7%;
-  background:#ffffff;
-}
-
-.left{
-  flex:1;
-  animation:fadeLeft 1s ease;
-}
-
-.left h1{
-  font-size:48px;
-  color:#005288;
-  line-height:125%;
-  margin-bottom:25px;
-}
-
-.left p{
-  line-height:150%;
-  margin-bottom:35px;
-  max-width:550px;
-}
-
-.buttons{
-  display:flex;
-  gap:15px;
-}
-
-.btn1{
-  background:#005288;
-  color:#fff;
-  text-decoration:none;
-  padding:14px 30px;
-  border-radius:8px;
-  transition:.4s;
-}
-
-.btn1:hover{
-  background:#003b63;
-  transform:translateY(-3px);
-}
-
-.btn2{
-  background:#c2cd23;
-  color:#fff;
-  text-decoration:none;
-  padding:14px 30px;
-  border-radius:8px;
-  transition:.4s;
-}
-
-.btn2:hover{
-  background:#a8b51d;
-  transform:translateY(-3px);
-}
-
-.right{
-  flex:1;
-  animation:fadeRight 1.2s ease;
-}
-
-.right img{
-  width:100%;
-  border-radius:14px;
-  transition:.5s;
-}
-
-.right img:hover{
-  transform:scale(1.03);
-}
-
-.heading{
-  text-align:center;
-  margin-bottom:50px;
-}
-
-.heading h2{
-  font-size:36px;
-  color:#005288;
-  margin-bottom:15px;
-}
-
-.heading p{
-  max-width:650px;
-  margin:auto;
-  line-height:150%;
-}
-
-.services{
-  padding:90px 7%;
-  background:#fafafa;
-}
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:25px;
-}
-
-.card{
-  background:#ffffff;
-  padding:35px 25px;
-  border-radius:14px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.08);
-  border-bottom:4px solid #c2cd23;
-  animation:fadeUp 1s ease;
-  transition:.4s;
-}
-
-.card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 10px 25px rgba(0,0,0,0.12);
-}
-
-.card h3{
-  color:#005288;
-  margin-bottom:18px;
-  font-size:28px;
-}
-
-.card p{
-  line-height:150%;
-}
-
-.process{
-  padding:90px 7%;
-  background:#ffffff;
-}
-
-.processBox{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:25px;
-}
-
-.processCard{
-  background:#f7f7f7;
-  padding:35px;
-  border-radius:14px;
-  text-align:center;
-  animation:zoomIn 1s ease;
-  transition:.4s;
-}
-
-.processCard:hover{
-  transform:translateY(-8px);
-  background:#005288;
-  color:#ffffff;
-}
-
-.processCard:hover h4{
-  color:#ffffff;
-}
-
-.processCard h3{
-  font-size:42px;
-  color:#c2cd23;
-  margin-bottom:15px;
-}
-
-.processCard h4{
-  color:#005288;
-  margin-bottom:15px;
-}
-
-.features{
-  padding:90px 7%;
-  background:#f3f4f6;
-}
-
-.featureGrid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:25px;
-}
-
-.featureCard{
-  background:#ffffff;
-  padding:35px;
-  border-radius:14px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.08);
-  border-left:5px solid #005288;
-  animation:fadeUp 1s ease;
-  transition:.4s;
-}
-
-.featureCard:hover{
-  transform:translateY(-8px);
-}
-
-.featureCard h3{
-  color:#005288;
-  margin-bottom:15px;
-}
-
-.team{
-  padding:90px 7%;
-  background:#ffffff;
-}
-
-.teamBox{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:25px;
-}
-
-.teamCard{
-  background:#f7f7f7;
-  border-radius:14px;
-  overflow:hidden;
-  text-align:center;
-  animation:zoomIn 1s ease;
-  transition:.4s;
-}
-
-.teamCard:hover{
-  transform:translateY(-10px);
-}
-
-.teamCard img{
-  width:100%;
-  height:280px;
-  object-fit:cover;
-}
-
-.teamCard h3{
-  margin-top:20px;
-  color:#005288;
-}
-
-.teamCard p{
-  padding:10px 20px 25px;
-}
-
-.stats{
-  padding:80px 7%;
-  background:#005288;
-}
-
-.statBox{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:25px;
-}
-
-.statCard{
-  text-align:center;
-  color:#ffffff;
-  animation:fadeUp 1s ease;
-}
-
-.statCard h2{
-  font-size:36px;
-  margin-bottom:10px;
-}
-
-.pricing{
-  padding:90px 7%;
-  background:#ffffff;
-}
-
-.pricingBox{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:25px;
-}
-
-.priceCard{
-  background:#f7f7f7;
-  padding:40px 30px;
-  border-radius:16px;
-  text-align:center;
-  animation:fadeUp 1s ease;
-  transition:.4s;
-}
-
-.priceCard:hover{
-  transform:translateY(-10px);
-}
-
-.priceCard h3{
-  color:#005288;
-  margin-bottom:20px;
-}
-
-.priceCard h2{
-  font-size:36px;
-  color:#c2cd23;
-  margin-bottom:25px;
-}
-
-.priceCard p{
-  margin-bottom:15px;
-}
-
-.priceCard a{
-  display:inline-block;
-  margin-top:20px;
-  background:#005288;
-  color:#ffffff;
-  text-decoration:none;
-  padding:14px 28px;
-  border-radius:8px;
-}
-
-.active{
-  background:#005288;
-  color:#ffffff;
-}
-
-.active h3,
-.active h2{
-  color:#ffffff;
-}
-
-.active a{
-  background:#c2cd23;
-}
-
-.reviews{
-  padding:90px 7%;
-  background:#ffffff;
-}
-
-.reviewBox{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:25px;
-}
-
-.review{
-  background:#f7f7f7;
-  padding:30px;
-  border-radius:14px;
-  animation:fadeUp 1s ease;
-  transition:.4s;
-}
-
-.review:hover{
-  transform:translateY(-8px);
-}
-
-.review p{
-  line-height:150%;
-  margin-bottom:18px;
-}
-
-.review h4{
-  color:#005288;
-}
-
-.newsletter{
-  padding:90px 7%;
-  background:#f3f4f6;
-}
-
-.newsletterContent{
-  max-width:800px;
-  margin:auto;
-  text-align:center;
-}
-
-.newsletterContent h2{
-  font-size:36px;
-  color:#005288;
-  margin-bottom:15px;
-}
-
-.newsletterContent p{
-  margin-bottom:30px;
-}
-
-.newsForm{
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  flex-wrap:wrap;
-}
-
-.newsForm input{
-  width:400px;
-  padding:15px;
-  border:1px solid #ddd;
-  border-radius:8px;
-}
-
-.newsForm button{
-  background:#c2cd23;
-  color:#ffffff;
-  width: 130px;
-  height: 45px;
-  border:none;
-  padding:15px 28px;
-  border-radius:8px;
-  cursor:pointer;
-  transition:.4s;
-}
-
-.newsForm button:hover{
-  background:#a8b51d;
-}
-
-.contact{
-  padding:90px 7%;
-  background:#ffffff;
-}
-
-.contactArea{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
-  align-items:center;
-}
-
-.text h2{
-  font-size:36px;
-  color:#005288;
-  margin-bottom:15px;
-}
-
-form{
-  background:#f7f7f7;
-  padding:35px;
-  border-radius:14px;
-}
-
-form input,
-form textarea{
-  width:100%;
-  padding:14px;
-  margin-bottom:18px;
-  border:1px solid #ddd;
-  border-radius:8px;
-}
-
-form textarea{
-  height:130px;
-  resize:none;
-}
-
-form button{
-  background:#005288;
-  color:#ffffff;
-  border:none;
-  padding:14px 30px;
-  border-radius:8px;
-  cursor:pointer;
-  transition:.4s;
-}
-
-form button:hover{
-  background:#003b63;
-}
-
-footer{
-  background:#000000;
-  color:#ffffff;
-  padding:70px 7% 30px;
-}
-
-.footerGrid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:40px;
-}
-
-.footerGrid h3{
-  margin-bottom:20px;
-  color:#ffffff;
-}
-
-.footerGrid p,
-.footerGrid a{
-  color:#cccccc;
-  text-decoration:none;
-  line-height:150%;
-}
-
-.footerBottom{
-  text-align:center;
-  margin-top:40px;
-  border-top:1px solid #333;
-  padding-top:20px;
-}
-
-@media(max-width:900px){
-
-  header{
-    flex-direction:column;
-    gap:20px;
-  }
-
-  .hero{
-    flex-direction:column;
-    text-align:center;
-  }
-
-  .buttons{
-    justify-content:center;
-  }
-
-  .cards,
-  .processBox,
-  .featureGrid,
-  .teamBox,
-  .statBox,
-  .pricingBox,
-  .reviewBox,
-  .contactArea,
-  .footerGrid{
-    grid-template-columns:1fr;
-  }
-
-  .left h1{
-    font-size:48px;
-  }
-
-}
-
-</style>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Evo Systems</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #555555;
+      overflow-x: hidden;
+      line-height: 160%;
+    }
+
+    @keyframes fadeUp {
+
+      from {
+        opacity: 0;
+        transform: translateY(80px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    #header {
+      width: 100%;
+      background: #ffffff;
+      padding: 20px 7%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    #navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #logo {
+      font-size: 32px;
+      font-weight: 700;
+      color: #005288;
+    }
+
+    #navLinks {
+      display: flex;
+      list-style: none;
+      gap: 35px;
+    }
+
+    #navLinks li a {
+      text-decoration: none;
+      color: #222222;
+      font-size: 16px;
+      font-weight: 600;
+      transition: .4s;
+    }
+
+    #navLinks li a:hover {
+      color: #005288;
+    }
+
+    #navBtn {
+      text-decoration: none;
+      background: #005288;
+      color: #ffffff;
+      padding: 14px 28px;
+      border-radius: 8px;
+      transition: .4s;
+      font-weight: 600;
+      letter-spacing: .5px;
+    }
+
+    #navBtn:hover {
+      background: #003b63;
+    }
+
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+      gap: 70px;
+      padding: 120px 7%;
+      background: linear-gradient(to right, #ffffff 55%, #eef4fb 45%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #heroText {
+      animation: fadeUp 1s ease;
+    }
+
+    #heroText h4 {
+      color: #005288;
+      font-size: 20px;
+      margin-bottom: 18px;
+      letter-spacing: 1px;
+    }
+
+    #heroText h1 {
+      font-size: 72px;
+      color: #002d62;
+      line-height: 115%;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+
+    #heroText p {
+      font-size: 16px;
+      max-width: 550px;
+      margin-bottom: 35px;
+    }
+
+    #heroButtons {
+      display: flex;
+      gap: 18px;
+    }
+
+    #heroBtn1 {
+      text-decoration: none;
+      background: #005288;
+      color: #ffffff;
+      padding: 16px 36px;
+      border-radius: 8px;
+      transition: .4s;
+      font-weight: 600;
+      letter-spacing: .5px;
+    }
+
+    #heroBtn1:hover {
+      background: #003b63;
+      transform: translateY(-5px);
+    }
+
+    #heroBtn2 {
+      text-decoration: none;
+      background: #c2cd23;
+      color: #ffffff;
+      padding: 16px 36px;
+      border-radius: 8px;
+      transition: .4s;
+      font-weight: 600;
+      letter-spacing: .5px;
+    }
+
+    #heroBtn2:hover {
+      background: #aab51d;
+      transform: translateY(-5px);
+    }
+
+    #heroImage {
+      animation: fadeUp 1.2s ease;
+    }
+
+    #heroImage img {
+      width: 100%;
+      border-radius: 20px;
+      animation: float 4s ease-in-out infinite;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+      transition: .5s;
+    }
+
+    #heroImage img:hover {
+      transform: scale(1.03);
+    }
+
+    #heroOverlay {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: #dfeeff;
+      border-radius: 50%;
+      top: -150px;
+      right: -120px;
+      opacity: .5;
+    }
+
+    #heroMiniCards {
+      display: flex;
+      gap: 20px;
+      margin-top: 45px;
+    }
+
+    #heroMiniCard {
+      background: #ffffff;
+      padding: 22px 28px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      min-width: 180px;
+    }
+
+    #heroMiniCard h3 {
+      color: #005288;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    #heroMiniCard p {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    #sectionTitle {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+
+    #sectionTitle h4 {
+      color: #005288;
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    #sectionTitle h2 {
+      font-size: 36px;
+      color: #002d62;
+      margin-bottom: 18px;
+      line-height: 130%;
+    }
+
+    #sectionTitle p {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    #services {
+      padding: 130px 7%;
+      background: #eef4fb;
+    }
+
+    #servicesGrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    #serviceCard {
+      background: #ffffff;
+      padding: 50px 35px;
+      border-radius: 20px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+      transition: .4s;
+      border-top: 4px solid transparent;
+      animation: fadeUp 1s ease;
+    }
+
+    #serviceCard:hover {
+      transform: translateY(-12px);
+      border-color: #005288;
+    }
+
+    #serviceCard h3 {
+      color: #005288;
+      margin-bottom: 18px;
+      font-size: 28px;
+    }
+
+    #serviceIcon {
+      width: 80px;
+      height: 80px;
+      background: #eef4fb;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      margin-bottom: 25px;
+    }
+
+    #serviceCard ul {
+      margin-top: 20px;
+      padding-left: 18px;
+    }
+
+    #serviceCard ul li {
+      margin-bottom: 12px;
+    }
+
+    #process {
+      padding: 130px 7%;
+      background: #ffffff;
+    }
+
+    #processGrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    #processCard {
+      background: #f5f7fb;
+      padding: 45px;
+      border-radius: 18px;
+      text-align: center;
+      transition: .4s;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    #processCard:hover {
+      background: #005288;
+      color: #ffffff;
+      transform: translateY(-10px);
+    }
+
+    #processCard h3 {
+      font-size: 28px;
+      color: #c2cd23;
+      margin-bottom: 15px;
+    }
+
+    #processCard h4 {
+      margin-bottom: 15px;
+      color: #005288;
+    }
+
+    #processCard:hover h4 {
+      color: #ffffff;
+    }
+
+    #features {
+      padding: 130px 7%;
+      background: #eef4fb;
+    }
+
+    #featureGrid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    #featureCard {
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 18px;
+      border-left: 5px solid #005288;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: .4s;
+    }
+
+    #featureCard:hover {
+      transform: translateY(-10px);
+    }
+
+    #featureCard h3 {
+      color: #005288;
+      margin-bottom: 15px;
+    }
+
+    #team {
+      padding: 130px 7%;
+      background: #ffffff;
+    }
+
+    #teamGrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    #teamCard {
+      background: #f5f7fb;
+      border-radius: 18px;
+      overflow: hidden;
+      text-align: center;
+      transition: .4s;
+      position: relative;
+    }
+
+    #teamCard:hover {
+      transform: translateY(-10px);
+    }
+
+    #teamCard img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      transition: .5s;
+    }
+
+    #teamCard:hover img {
+      transform: scale(1.08);
+    }
+
+    #teamCard h3 {
+      margin-top: 20px;
+      color: #005288;
+    }
+
+    #teamCard p {
+      padding: 12px 20px 25px;
+    }
+
+    #stats {
+      padding: 100px 7%;
+      background: #005288;
+    }
+
+    #statsGrid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+    }
+
+    #statCard {
+      text-align: center;
+      color: #ffffff;
+    }
+
+    #statCard h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    #pricing {
+      padding: 130px 7%;
+      background: #ffffff;
+    }
+
+    #pricingGrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    #priceCard {
+      background: #ffffff;
+      padding: 50px 35px;
+      border-radius: 20px;
+      text-align: center;
+      transition: .4s;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+    }
+
+    #priceCard:hover {
+      transform: translateY(-10px);
+    }
+
+    #priceCard h3 {
+      color: #005288;
+      margin-bottom: 20px;
+    }
+
+    #priceCard h2 {
+      color: #c2cd23;
+      font-size: 36px;
+      margin-bottom: 25px;
+    }
+
+    #priceCard p {
+      margin-bottom: 15px;
+    }
+
+    #priceCard a {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      background: #005288;
+      color: #ffffff;
+      padding: 14px 30px;
+      border-radius: 8px;
+      font-weight: 600;
+      letter-spacing: .5px;
+    }
+
+    #activeCard {
+      background: #005288;
+      color: #ffffff;
+      transform: scale(1.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #activeCard::before {
+      content: "POPULAR";
+      position: absolute;
+      top: 18px;
+      right: -35px;
+      background: #c2cd23;
+      color: #ffffff;
+      padding: 8px 40px;
+      transform: rotate(45deg);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    #activeCard h3,
+    #activeCard h2 {
+      color: #ffffff;
+    }
+
+    #activeCard a {
+      background: #c2cd23;
+    }
+
+    #clients {
+      padding: 120px 7%;
+      background: #ffffff;
+    }
+
+    #clientsGrid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 25px;
+    }
+
+    #clientBox {
+      background: #f5f7fb;
+      padding: 35px 20px;
+      border-radius: 16px;
+      text-align: center;
+      font-weight: 700;
+      color: #005288;
+      transition: .4s;
+    }
+
+    #clientBox:hover {
+      transform: translateY(-8px);
+      background: #005288;
+      color: #ffffff;
+    }
+
+    #reviews {
+      padding: 130px 7%;
+      background: #eef4fb;
+    }
+
+    #reviewGrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    #reviewCard {
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 18px;
+      transition: .4s;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    #reviewCard:hover {
+      transform: translateY(-10px);
+    }
+
+    #reviewCard p {
+      margin-bottom: 18px;
+    }
+
+    #reviewCard h4 {
+      color: #005288;
+    }
+
+    #reviewStars {
+      color: #d1df0d;
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    #newsletter {
+      padding: 120px 7%;
+      background: #005288;
+    }
+
+    #newsletterBox {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+    }
+
+    #newsletterBox h2,
+    #newsletterBox p {
+      color: #ffffff;
+    }
+
+    #newsletterBox h2 {
+      font-size: 36px;
+      margin-bottom: 18px;
+    }
+
+    #newsletterBox p {
+      margin-bottom: 30px;
+    }
+
+    #newsletterForm {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    #newsletterForm input {
+      width: 420px;
+      padding: 16px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    #newsletterForm button {
+      background: #c2cd23;
+      color: #ffffff;
+      border: none;
+      width: 140px;
+      height: 50px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: .4s;
+      font-weight: 600;
+      letter-spacing: .5px;
+    }
+
+    #newsletterForm button:hover {
+      background: #aab51d;
+    }
+
+    #contact {
+      padding: 130px 7%;
+      background: #eef4fb;
+    }
+
+    #contactGrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    #contactText h2 {
+      font-size: 36px;
+      color: #002d62;
+      margin-bottom: 20px;
+    }
+
+    #contactForm {
+      background: #ffffff;
+      padding: 45px;
+      border-radius: 18px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    #contactForm input,
+    #contactForm textarea {
+      width: 100%;
+      padding: 16px;
+      border: 1px solid #dddddd;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+
+    #contactForm textarea {
+      height: 150px;
+      resize: none;
+    }
+
+    #contactForm button {
+      background: #005288;
+      color: #ffffff;
+      border: none;
+      padding: 15px 34px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: .5px;
+    }
+
+    #footer {
+      background: #081420;
+      color: #ffffff;
+      padding: 90px 7% 30px;
+    }
+
+    #footerGrid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    #footerBox h3 {
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    #footerBox p,
+    #footerBox a {
+      color: #cccccc;
+      text-decoration: none;
+      line-height: 180%;
+    }
+
+    #footerBottom {
+      border-top: 1px solid #333333;
+      padding-top: 20px;
+      text-align: center;
+      color: #cccccc;
+    }
+
+    #footerSubscribe {
+      display: flex;
+      margin-top: 20px;
+      gap: 10px;
+    }
+
+    #footerSubscribe input {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    #footerSubscribe button {
+      padding: 14px 18px;
+      border: none;
+      background: #c2cd23;
+      color: #ffffff;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    #industrySection {
+      padding: 130px 7%;
+      background: #ffffff;
+    }
+
+    #industryGrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    #industryCard {
+      background: #f5f7fb;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: .4s;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    #industryCard:hover {
+      transform: translateY(-10px);
+    }
+
+    #industryCard img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+
+    #industryContent {
+      padding: 30px;
+    }
+
+    #industryContent h3 {
+      color: #005288;
+      margin-bottom: 15px;
+      font-size: 28px;
+    }
+
+    #companyProcess {
+      padding: 130px 7%;
+      background: #eef4fb;
+    }
+
+    #companyProcessGrid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    #companyProcessCard {
+      background: #ffffff;
+      padding: 45px 30px;
+      border-radius: 20px;
+      text-align: center;
+      transition: .4s;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    #companyProcessCard:hover {
+      transform: translateY(-10px);
+      background: #005288;
+      color: #ffffff;
+    }
+
+    #processNumber {
+      width: 75px;
+      height: 75px;
+      background: #005288;
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: auto auto 25px;
+      font-size: 30px;
+      font-weight: 700;
+    }
+
+    #companyProcessCard:hover #processNumber {
+      background: #c2cd23;
+    }
+
+    #companyProcessCard h3 {
+      margin-bottom: 15px;
+      color: #005288;
+    }
+
+    #companyProcessCard:hover h3 {
+      color: #ffffff;
+    }
+
+    #businessFeatureSection {
+      padding: 130px 7%;
+      background: #ffffff;
+    }
+
+    #businessFeatureGrid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    #businessFeatureCard {
+      background: #f5f7fb;
+      padding: 45px 30px;
+      border-radius: 20px;
+      text-align: center;
+      transition: .4s;
+    }
+
+    #businessFeatureCard:hover {
+      transform: translateY(-10px);
+      background: #005288;
+      color: #ffffff;
+    }
+
+    #businessFeatureIcon {
+      width: 85px;
+      height: 85px;
+      background: #eef4fb;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      margin: auto auto 25px;
+    }
+
+    #businessFeatureCard h3 {
+      color: #005288;
+      margin-bottom: 15px;
+    }
+
+    #businessFeatureCard:hover h3 {
+      color: #ffffff;
+    }
+
+    @media(max-width:992px) {
+
+      #industryGrid,
+      #companyProcessGrid,
+      #businessFeatureGrid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width:992px) {
+
+      #hero,
+      #servicesGrid,
+      #processGrid,
+      #featureGrid,
+      #teamGrid,
+      #statsGrid,
+      #pricingGrid,
+      #reviewGrid,
+      #contactGrid,
+      #footerGrid {
+        grid-template-columns: 1fr;
+      }
+
+      #navbar {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      #navLinks {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      #hero {
+        text-align: center;
+        background: #ffffff;
+      }
+
+      #heroButtons {
+        justify-content: center;
+      }
+
+      #heroText h1 {
+        font-size: 48px;
+      }
+
+      section {
+        padding: 80px 20px !important;
+      }
+    }
+  </style>
+
 </head>
 
 <body>
-<header>
 
-<div class="logo">Evo Systems</div>
+  <header id="header">
 
-<nav>
-<ul>
-<li><a href="#home">Home</a></li>
-<li><a href="#services">Services</a></li>
-<li><a href="#pricing">Pricing</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</nav>
+    <nav id="navbar">
 
-</header>
+      <div id="logo">Evo Systems</div>
 
-<section class="hero">
+      <ul id="navLinks">
 
-<div class="left">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact">Contact</a></li>
 
-<h1>Build Better Websites For Your Business</h1>
+      </ul>
 
-<p>
-We create simple and modern websites that help businesses grow online.
-</p>
+      <a href="#contact" id="navBtn">Get Started</a>
 
-<div class="buttons">
+    </nav>
 
-<a href="#contact" class="btn1">Start Now</a>
+  </header>
 
-<a href="#services" class="btn2">Explore More</a>
+  <section id="hero">
 
-</div>
+    <div id="heroOverlay"></div>
 
-</div>
+    <div id="heroText">
 
-<div class="right">
+      <h4>SMART DIGITAL SOLUTIONS</h4>
 
-<img src="img/image2.jpg" alt="image">
+      <h1>
+        Transform Your
+        Business Digitally
+      </h1>
 
-</div>
+      <p>
+        Evo Systems creates scalable digital solutions,
+        professional websites, and business platforms
+        designed for modern companies.
+      </p>
 
-</section>
+      <div id="heroButtons">
 
-<section class="services" id="services">
+        <a href="#contact" id="heroBtn1">
+          Start Project
+        </a>
 
-<div class="heading">
+        <a href="#services" id="heroBtn2">
+          View Services
+        </a>
 
-<h2>Our Services</h2>
+      </div>
 
-<p>
-Modern and responsive services for growing businesses.
-</p>
+      <div id="heroMiniCards">
 
-</div>
+        <div id="heroMiniCard">
 
-<div class="cards">
+          <h3>500+</h3>
 
-<div class="card">
-<h3>Website Design</h3>
-<p>Modern layouts with responsive structure.</p>
-</div>
+          <p>Projects Delivered</p>
 
-<div class="card">
-<h3>Development</h3>
-<p>Fast and optimized websites with clean code.</p>
-</div>
+        </div>
 
-<div class="card">
-<h3>Branding</h3>
-<p>Creative branding with modern visuals.</p>
-</div>
+        <div id="heroMiniCard">
 
-</div>
+          <h3>98%</h3>
 
-</section>
+          <p>Client Satisfaction</p>
 
-<section class="process" id="process">
+        </div>
 
-<div class="heading">
+      </div>
 
-<h2>Our Process</h2>
+    </div>
 
-<p>Simple steps for better project delivery.</p>
+    <div id="heroImage">
 
-</div>
+      <img src="img/image2.jpg" alt="Hero Image">
 
-<div class="processBox">
+    </div>
 
-<div class="processCard">
-<h3>01</h3>
-<h4>Planning</h4>
-<p>Understanding project goals.</p>
-</div>
+  </section>
 
-<div class="processCard">
-<h3>02</h3>
-<h4>Design</h4>
-<p>Creating modern UI layouts.</p>
-</div>
+  <section id="services">
 
-<div class="processCard">
-<h3>03</h3>
-<h4>Launch</h4>
-<p>Testing and launching websites.</p>
-</div>
+    <div id="sectionTitle">
 
-</div>
+      <h4>OUR SERVICES</h4>
 
-</section>
+      <h2>Modern Solutions For Businesses</h2>
 
-<section class="features" id="features">
+      <p>
+        Creative and responsive services for startups and growing companies.
+      </p>
 
-<div class="heading">
+    </div>
 
-<h2>Why Choose Us</h2>
+    <div id="servicesGrid">
 
-<p>Better design and smooth user experience.</p>
+      <div id="serviceCard">
 
-</div>
+        <div id="serviceIcon">🌐</div>
 
-<div class="featureGrid">
+        <h3>Web Development</h3>
 
-<div class="featureCard">
-<h3>Responsive Design</h3>
-<p>Mobile friendly layouts for all devices.</p>
-</div>
+        <p>
+          Professional responsive websites with
+          modern UI and scalable structure.
+        </p>
 
-<div class="featureCard">
-<h3>Fast Loading</h3>
-<p>Optimized performance and speed.</p>
-</div>
+        <ul>
 
-<div class="featureCard">
-<h3>Clean UI</h3>
-<p>Modern and professional interface.</p>
-</div>
+          <li>Responsive Layouts</li>
+          <li>Corporate Websites</li>
+          <li>Landing Pages</li>
 
-<div class="featureCard">
-<h3>Support</h3>
-<p>Quick support and project guidance.</p>
-</div>
+        </ul>
 
-</div>
+      </div>
 
-</section>
+      <div id="serviceCard">
 
-<section class="team" id="team">
+        <div id="serviceIcon">⚙️</div>
 
-<div class="heading">
+        <h3>Business Systems</h3>
 
-<h2>Our Team</h2>
+        <p>
+          Advanced digital systems and automation
+          solutions for modern companies.
+        </p>
 
-<p>Creative people behind our projects.</p>
+        <ul>
 
-</div>
+          <li>CRM Systems</li>
+          <li>Automation Tools</li>
+          <li>Cloud Solutions</li>
 
-<div class="teamBox">
+        </ul>
 
-<div class="teamCard">
-<img src="img/IMAGE 5.jpg" alt="">
-<h3>David Miller</h3>
-<p>Designer</p>
-</div>
+      </div>
 
-<div class="teamCard">
-<img src="img/IMAGES 7.png" alt="">
-<h3>Sarah Wilson</h3>
-<p>Developer</p>
-</div>
+      <div id="serviceCard">
 
-<div class="teamCard">
-<img src="img/IMAGE 6.jpg" alt="">
-<h3>James Carter</h3>
-<p>Creative Head</p>
-</div>
+        <div id="serviceIcon">📈</div>
 
-</div>
+        <h3>Marketing Solutions</h3>
 
-</section>
+        <p>
+          Smart digital marketing strategies
+          focused on business growth.
+        </p>
 
-<section class="stats" id="stats">
+        <ul>
 
-<div class="statBox">
+          <li>SEO Optimization</li>
+          <li>Brand Marketing</li>
+          <li>Performance Analytics</li>
 
-<div class="statCard">
-<h2>250+</h2>
-<p>Projects</p>
-</div>
+        </ul>
 
-<div class="statCard">
-<h2>120+</h2>
-<p>Clients</p>
-</div>
+      </div>
 
-<div class="statCard">
-<h2>8+</h2>
-<p>Years</p>
-</div>
+    </div>
 
-<div class="statCard">
-<h2>24/7</h2>
-<p>Support</p>
-</div>
+  </section>
 
-</div>
+  <section id="process">
 
-</section>
+    <div id="sectionTitle">
 
-<section class="pricing" id="pricing">
+      <h4>WORK PROCESS</h4>
 
-<div class="heading">
+      <h2>How We Work</h2>
 
-<h2>Pricing Plans</h2>
+    </div>
 
-<p>Choose a plan for your business.</p>
+    <div id="processGrid">
 
-</div>
+      <div id="processCard">
 
-<div class="pricingBox">
+        <h3>01</h3>
 
-<div class="priceCard">
-<h3>Basic</h3>
-<h2>$199</h2>
-<p>Landing Page</p>
-<p>Responsive Layout</p>
-<a href="#">Choose</a>
-</div>
+        <h4>Planning</h4>
 
-<div class="priceCard active">
-<h3>Standard</h3>
-<h2>$399</h2>
-<p>Business Website</p>
-<p>Priority Support</p>
-<a href="#">Choose</a>
-</div>
+        <p>
+          Understanding project goals and requirements.
+        </p>
 
-<div class="priceCard">
-<h3>Premium</h3>
-<h2>$699</h2>
-<p>Custom Website</p>
-<p>Full Support</p>
-<a href="#">Choose</a>
-</div>
+      </div>
 
-</div>
+      <div id="processCard">
 
-</section>
+        <h3>02</h3>
 
-<section class="reviews" id="reviews">
+        <h4>Design</h4>
 
-<div class="heading">
+        <p>
+          Creating modern and attractive layouts.
+        </p>
 
-<h2>Client Reviews</h2>
+      </div>
 
-<p>Feedback from our clients.</p>
+      <div id="processCard">
 
-</div>
+        <h3>03</h3>
 
-<div class="reviewBox">
+        <h4>Launch</h4>
 
-<div class="review">
-<p>“Very clean and professional design.”</p>
-<h4>- Rahul Mehta</h4>
-</div>
+        <p>
+          Testing and launching responsive websites.
+        </p>
 
-<div class="review">
-<p>“Responsive layout and smooth experience.”</p>
-<h4>- Priya Shah</h4>
-</div>
+      </div>
 
-<div class="review">
-<p>“Loved the modern design quality.”</p>
-<h4>- Kevin Thomas</h4>
-</div>
+    </div>
 
-</div>
+  </section>
 
-</section>
+  <section id="features">
 
-<section class="newsletter" id="newsletter">
+    <div id="sectionTitle">
 
-<div class="newsletterContent">
+      <h4>WHY CHOOSE US</h4>
 
-<h2>Subscribe Newsletter</h2>
+      <h2>Professional Digital Services</h2>
 
-<p>Get updates and offers directly in your inbox.</p>
+    </div>
 
-<form class="newsForm">
+    <div id="featureGrid">
 
-<input type="email" placeholder="Enter your email">
+      <div id="featureCard">
 
-<button type="submit">Subscribe</button>
+        <h3>Responsive Design</h3>
 
-</form>
+        <p>
+          Mobile friendly layouts for all devices.
+        </p>
 
-</div>
+      </div>
 
-</section>
+      <div id="featureCard">
 
-<section class="contact" id="contact">
+        <h3>Fast Performance</h3>
 
-<div class="contactArea">
+        <p>
+          Optimized websites with smooth loading speed.
+        </p>
 
-<div class="text">
+      </div>
 
-<h2>Contact Us</h2>
+      <div id="featureCard">
 
-<p>
-Have an idea? Send us a message today.
-</p>
+        <h3>Modern UI</h3>
 
-</div>
+        <p>
+          Clean and professional user interfaces.
+        </p>
 
-<form>
+      </div>
 
-<input type="text" placeholder="Your Name">
+      <div id="featureCard">
 
-<input type="email" placeholder="Your Email">
+        <h3>Support</h3>
 
-<textarea placeholder="Your Message"></textarea>
+        <p>
+          Quick support and project guidance anytime.
+        </p>
 
-<button type="submit">Send Message</button>
+      </div>
 
-</form>
+    </div>
 
-</div>
+  </section>
 
-</section>
+  <section id="industrySection">
 
-<footer>
+    <div id="sectionTitle">
 
-<div class="footerGrid">
+      <h4>INDUSTRIES WE SERVE</h4>
 
-<div>
-<h3>Evo Systems</h3>
-<p>
-Modern website solutions for businesses and startups.
-</p>
-</div>
+      <h2>Solutions For Every Business</h2>
 
-<div>
-<h3>Quick Links</h3>
-<p><a href="#">Home</a></p>
-<p><a href="#">Services</a></p>
-<p><a href="#">Pricing</a></p>
-</div>
+      <p>
+        Professional technology solutions for multiple industries
+        with modern and scalable infrastructure.
+      </p>
 
-<div>
-<h3>Services</h3>
-<p>Website Design</p>
-<p>Development</p>
-<p>Branding</p>
-</div>
+    </div>
 
-<div>
-<h3>Contact</h3>
-<p>info@evosystems.com</p>
-<p>+91 9876543210</p>
-<p>New York, USA</p>
-</div>
+    <div id="industryGrid">
 
-</div>
+      <div id="industryCard">
 
-<div class="footerBottom">
+        <img src="img/finance.jpg" alt="Finance">
 
-<p>© 2026 Evo Systems. All Rights Reserved.</p>
+        <div id="industryContent">
 
-</div>
+          <h3>Finance Solutions</h3>
 
-</footer>
+          <p>
+            Secure and scalable digital platforms
+            for banking and finance businesses.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div id="industryCard">
+
+        <img src="img/healthcare.jpg" alt="Healthcare">
+
+        <div id="industryContent">
+
+          <h3>Healthcare Systems</h3>
+
+          <p>
+            Smart healthcare platforms with
+            modern patient management systems.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div id="industryCard">
+
+        <img src="img/ecommerce.jpg" alt="Ecommerce">
+
+        <div id="industryContent">
+
+          <h3>E-Commerce Platforms</h3>
+
+          <p>
+            Professional ecommerce websites
+            for online businesses and brands.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="companyProcess">
+
+    <div id="sectionTitle">
+
+      <h4>OUR WORKFLOW</h4>
+
+      <h2>How Evo Systems Works</h2>
+
+      <p>
+        Our professional workflow helps businesses
+        achieve better digital transformation.
+      </p>
+
+    </div>
+
+    <div id="companyProcessGrid">
+
+      <div id="companyProcessCard">
+
+        <div id="processNumber">01</div>
+
+        <h3>Research</h3>
+
+        <p>
+          Understanding project requirements
+          and business goals carefully.
+        </p>
+
+      </div>
+
+      <div id="companyProcessCard">
+
+        <div id="processNumber">02</div>
+
+        <h3>Planning</h3>
+
+        <p>
+          Creating structured planning and
+          modern design strategies.
+        </p>
+
+      </div>
+
+      <div id="companyProcessCard">
+
+        <div id="processNumber">03</div>
+
+        <h3>Development</h3>
+
+        <p>
+          Building responsive and scalable
+          digital business solutions.
+        </p>
+
+      </div>
+
+      <div id="companyProcessCard">
+
+        <div id="processNumber">04</div>
+
+        <h3>Launch</h3>
+
+        <p>
+          Final optimization and deployment
+          with professional support.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="businessFeatureSection">
+
+    <div id="sectionTitle">
+
+      <h4>WHY CHOOSE US</h4>
+
+      <h2>Professional Business Features</h2>
+
+      <p>
+        We create modern business systems with
+        performance, security, and scalability.
+      </p>
+
+    </div>
+
+    <div id="businessFeatureGrid">
+
+      <div id="businessFeatureCard">
+
+        <div id="businessFeatureIcon">⚡</div>
+
+        <h3>Fast Performance</h3>
+
+        <p>
+          Optimized websites and systems
+          with high loading speed.
+        </p>
+
+      </div>
+
+      <div id="businessFeatureCard">
+
+        <div id="businessFeatureIcon">🔒</div>
+
+        <h3>Secure Systems</h3>
+
+        <p>
+          Modern security infrastructure
+          for safer business operations.
+        </p>
+
+      </div>
+
+      <div id="businessFeatureCard">
+
+        <div id="businessFeatureIcon">☁️</div>
+
+        <h3>Cloud Integration</h3>
+
+        <p>
+          Cloud based digital services
+          with scalable architecture.
+        </p>
+
+      </div>
+
+      <div id="businessFeatureCard">
+
+        <div id="businessFeatureIcon">📈</div>
+
+        <h3>Business Growth</h3>
+
+        <p>
+          Digital strategies focused on
+          customer engagement and growth.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="team">
+
+    <div id="sectionTitle">
+
+      <h4>OUR TEAM</h4>
+
+      <h2>Creative People Behind Our Projects</h2>
+
+    </div>
+
+    <div id="teamGrid">
+
+      <div id="teamCard">
+
+        <img src="img/IMAGE 5.jpg" alt="">
+
+        <h3>David Miller</h3>
+
+        <p>UI Designer</p>
+
+      </div>
+
+      <div id="teamCard">
+
+        <img src="img/IMAGES 7.png" alt="">
+
+        <h3>Sarah Wilson</h3>
+
+        <p>Frontend Developer</p>
+
+      </div>
+
+      <div id="teamCard">
+
+        <img src="img/IMAGE 6.jpg" alt="">
+
+        <h3>James Carter</h3>
+
+        <p>Creative Director</p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="stats">
+
+    <div id="statsGrid">
+
+      <div id="statCard">
+
+        <h2>250+</h2>
+
+        <p>Projects Completed</p>
+
+      </div>
+
+      <div id="statCard">
+
+        <h2>120+</h2>
+
+        <p>Happy Clients</p>
+
+      </div>
+
+      <div id="statCard">
+
+        <h2>8+</h2>
+
+        <p>Years Experience</p>
+
+      </div>
+
+      <div id="statCard">
+
+        <h2>24/7</h2>
+
+        <p>Support Available</p>
+
+      </div>
+
+    </div>
+
+  </section>
+  <section id="clients">
+
+    <div id="sectionTitle">
+
+      <h4>TRUSTED CLIENTS</h4>
+
+      <h2>Companies We Work With</h2>
+
+    </div>
+
+    <div id="clientsGrid">
+
+      <div id="clientBox">NEXORA</div>
+      <div id="clientBox">DIGITECH</div>
+      <div id="clientBox">INNOVATE</div>
+      <div id="clientBox">STARTUP HUB</div>
+      <div id="clientBox">CLOUDIFY</div>
+
+    </div>
+
+  </section>
+
+  <section id="pricing">
+
+    <div id="sectionTitle">
+
+      <h4>PRICING PLANS</h4>
+
+      <h2>Choose Your Plan</h2>
+
+    </div>
+
+    <div id="pricingGrid">
+
+      <div id="priceCard">
+
+        <h3>Basic</h3>
+
+        <h2>$199</h2>
+
+        <p>Landing Page</p>
+
+        <p>Responsive Layout</p>
+
+        <a href="#">Choose</a>
+
+      </div>
+
+      <div id="priceCard">
+
+        <h3>Standard</h3>
+
+        <h2>$399</h2>
+
+        <p>Business Website</p>
+
+        <p>Priority Support</p>
+
+        <a href="#">Choose</a>
+
+      </div>
+
+      <div id="priceCard">
+
+        <h3>Premium</h3>
+
+        <h2>$699</h2>
+
+        <p>Custom Website</p>
+
+        <p>Full Support</p>
+
+        <a href="#">Choose</a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="reviews">
+
+    <div id="sectionTitle">
+
+      <h4>CLIENT REVIEWS</h4>
+
+      <h2>What Our Clients Say</h2>
+
+    </div>
+
+    <div id="reviewGrid">
+
+      <div id="reviewCard">
+
+        <p>
+          “Very clean and professional website design.”
+        </p>
+
+        <div id="reviewStars">
+
+          ★ ★ ★ ★ ★
+
+        </div>
+
+
+        <h4>- Rahul Mehta</h4>
+
+      </div>
+
+      <div id="reviewCard">
+
+        <p>
+          “Responsive layouts and smooth user experience.”
+        </p>
+
+        <div id="reviewStars">
+
+          ★ ★ ★ ★ ☆
+
+        </div>
+
+
+        <h4>- Priya Shah</h4>
+
+      </div>
+
+      <div id="reviewCard">
+
+        <p>
+          “Creative design quality with fast delivery.”
+        </p>
+
+        <div id="reviewStars">
+
+          ★ ★ ★ ☆ ☆
+
+        </div>
+
+
+        <h4>- Kevin Thomas</h4>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="newsletter">
+
+    <div id="newsletterBox">
+
+      <h2>Subscribe Newsletter</h2>
+
+      <p>
+        Get updates and offers directly in your inbox.
+      </p>
+
+      <div id="footerSubscribe">
+
+        <input type="email" placeholder="Enter Email">
+
+        <button>Subscribe</button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="contact">
+
+    <div id="contactGrid">
+
+      <div id="contactText">
+
+        <h2>Contact Us</h2>
+
+        <p>
+          Have an idea? Send us a message today.
+        </p>
+
+      </div>
+
+      <form id="contactForm">
+
+        <input type="text" placeholder="Your Name">
+
+        <input type="email" placeholder="Your Email">
+
+        <textarea placeholder="Your Message"></textarea>
+
+        <button type="submit">Send Message</button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+  <footer id="footer">
+
+    <div id="footerGrid">
+
+      <div id="footerBox">
+
+        <h3>Evo Systems</h3>
+
+        <p>
+          Modern website solutions for businesses and startups.
+        </p>
+
+      </div>
+
+      <div id="footerBox">
+
+        <h3>Quick Links</h3>
+
+        <p><a href="#">Home</a></p>
+        <p><a href="#">Services</a></p>
+        <p><a href="#">Pricing</a></p>
+
+      </div>
+
+      <div id="footerBox">
+
+        <h3>Services</h3>
+
+        <p>Website Design</p>
+        <p>Development</p>
+        <p>Branding</p>
+
+      </div>
+
+      <div id="footerBox">
+
+        <h3>Contact</h3>
+
+        <p>info@evosystems.com</p>
+        <p>+91 9876543210</p>
+        <p>New York, USA</p>
+
+      </div>
+
+    </div>
+
+    <div id="footerBottom">
+
+      <p>&copy; 2026 Evo Systems. All Rights Reserved.</p>
+
+    </div>
+
+  </footer>
 
 </body>
+
 </html>
