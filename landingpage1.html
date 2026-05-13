@@ -2,8 +2,11 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Nova Networks</title>
 
     <style>
@@ -21,527 +24,460 @@
         body {
             background: #f4f4f4;
             color: #555555;
-            line-height: 150%;
             overflow-x: hidden;
+            line-height: 160%;
         }
 
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(80px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        img {
+            max-width: 100%;
+            display: block;
         }
 
-        .fadeUp {
-            opacity: 0;
-            animation: fadeUp 1s ease forwards;
+        a {
+            text-decoration: none;
         }
 
-        .delay1 {
-            animation-delay: 0.2s;
-        }
-
-        .delay2 {
-            animation-delay: 0.4s;
-        }
-
-        .delay3 {
-            animation-delay: 0.6s;
-        }
-
-        .delay4 {
-            animation-delay: 0.8s;
-        }
-
-        .delay5 {
-            animation-delay: 1s;
-        }
-
-        @keyframes floatImage {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-12px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
-        }
-
-        header {
-            background: linear-gradient(to right, #005288, #0b6aa8);
-            padding: 20px 7%;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        nav {
+        #topHeader {
+            background: #ffffff;
+            padding: 25px 7%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: #ffffff;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
             gap: 30px;
+            border-bottom: 1px solid #dddddd;
         }
 
-        nav ul li a {
-            text-decoration: none;
-            color: #ffffff;
-            font-size: 16px;
-            position: relative;
-            transition: .4s;
+        #logoSection h1 {
+            color: #005288;
+            font-size: 48px;
+            font-weight: 700;
         }
 
-        nav ul li a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -6px;
-            width: 0%;
-            height: 2px;
-            background: #c2cd23;
-            transition: .4s;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        nav ul li a:hover {
-            color: #c2cd23;
-        }
-
-        #home {
-            min-height: 100vh;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+        #searchSection {
+            flex: 1;
+            max-width: 550px;
+            display: flex;
             align-items: center;
-            gap: 50px;
-            padding: 80px 7%;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+            overflow: hidden;
             background: #ffffff;
         }
 
-        .homeText h1 {
-            font-size: 48px;
-            color: #005288;
-            line-height: 125%;
-            margin-bottom: 20px;
+        #searchSection input {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            outline: none;
+            font-size: 15px;
         }
 
-        .homeText p {
+        #searchSection button {
+            width: 65px;
+            height: 55px;
+            border: none;
+            background: #ffffff;
+            cursor: pointer;
+            color: #005288;
+            font-size: 18px;
+            transition: .3s;
+        }
+
+        #searchSection button:hover {
+            background: #005288;
+            color: #ffffff;
+        }
+
+        #topButtons {
+            display: flex;
+            gap: 25px;
+        }
+
+        #topButtons a {
+            color: #111111;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        #topButtons a:hover {
+            color: #005288;
+        }
+
+        #mainHeader {
+            background: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        #navbar {
+            padding: 22px 7%;
+        }
+
+        #navMenu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 35px;
+            list-style: none;
+            flex-wrap: nowrap;
+        }
+
+        #navMenu li a {
+            color: #111111;
+            font-weight: 700;
+            position: relative;
+            transition: .3s;
+            font-size: 15px;
+            white-space: nowrap;
+        }
+
+        #navMenu li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 0%;
+            height: 3px;
+            background: #005288;
+            transition: .3s;
+        }
+
+        #navMenu li a:hover {
+            color: #005288;
+        }
+
+        #navMenu li a:hover::after {
+            width: 100%;
+        }
+
+        #breadcrumb {
+            padding: 18px 7%;
+            background: #f7f7f7;
+            border-top: 1px solid #eeeeee;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        #breadcrumb p {
+            color: #555555;
             font-size: 16px;
-            margin-bottom: 30px;
+        }
+
+        #home {
+            min-height: 95vh;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+            gap: 60px;
+            padding: 90px 7%;
+            background: #ffffff;
+        }
+
+        #heroTag {
+            display: inline-block;
+            background: #e7f1f8;
+            color: #005288;
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        #homeContent h1 {
+            font-size: 48px;
+            line-height: 125%;
+            color: #002d62;
+            margin-bottom: 25px;
+        }
+
+        #homeContent p {
+            font-size: 16px;
+            line-height: 150%;
+            margin-bottom: 35px;
             max-width: 550px;
+        }
+
+        #heroButtons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
         }
 
         .btn {
             display: inline-block;
-            text-decoration: none;
-            background: #c2cd23;
+            padding: 15px 35px;
+            background: #005288;
             color: #ffffff;
-            padding: 14px 35px;
-            border-radius: 6px;
-            transition: .4s;
+            border-radius: 8px;
             font-weight: 600;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            transition: .5s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
+            transition: .3s;
         }
 
         .btn:hover {
-            background: #aab51d;
-            transform: translateY(-3px);
+            background: #005288;
+            transform: translateY(-4px);
         }
 
-        .homeImage img {
-            width: 100%;
-            border-radius: 16px;
-            animation: floatImage 4s ease-in-out infinite;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-            transition: .5s;
+        #secondaryBtn {
+            padding: 15px 35px;
+            border: 2px solid #005288;
+            border-radius: 8px;
+            color: #005288;
+            font-weight: 600;
+            transition: .3s;
         }
 
-        .homeImage img:hover {
-            transform: scale(1.03);
+        #secondaryBtn:hover {
+            background: #c2cd23;
+            color: #ffffff;
+        }
+
+        #homeImage img {
+            border-radius: 20px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
         }
 
         section {
-            padding: 90px 7%;
+            padding: 100px 7%;
         }
 
         .title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
         .title h2 {
             font-size: 36px;
             color: #005288;
             margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
         }
-
 
         .title p {
             max-width: 700px;
             margin: auto;
+            font-size: 16px;
         }
 
         #about {
-            background: #f4f4f4;
+            background: #f7f9fb;
         }
 
-        .aboutBox {
+        #aboutContainer {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
+            gap: 50px;
             align-items: center;
         }
 
-        .aboutBox img {
-            width: 100%;
-            border-radius: 14px;
-            transition: .5s;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        #aboutImage img {
+            border-radius: 18px;
         }
 
-        .aboutBox img:hover {
-            transform: scale(1.04);
-        }
-
-        .aboutText p {
-            margin-bottom: 18px;
+        #aboutText p {
+            margin-bottom: 22px;
             font-size: 16px;
+            line-height: 150%;
         }
 
         #services {
             background: #ffffff;
         }
 
-        .serviceBox {
+        #serviceContainer {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            margin-top: 40px;
+            gap: 30px;
         }
 
-        .service {
-            background: #f4f4f4;
-            padding: 35px 25px;
-            border-radius: 12px;
-            text-align: center;
-            transition: .4s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        .serviceCard {
+            background: #f7f9fb;
+            padding: 40px;
+            border-radius: 16px;
+            transition: .3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
-        .service:hover {
-            transform: translateY(-12px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        .serviceCard:hover {
+            transform: translateY(-8px);
         }
 
-        .service h3 {
+        .serviceCard h3 {
             color: #005288;
             margin-bottom: 15px;
             font-size: 28px;
         }
 
-        #choose {
-            background: #f4f4f4;
+        #portfolio {
+            background: #f7f9fb;
         }
 
-        .chooseBox {
+        #portfolioContainer {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            margin-top: 40px;
+            gap: 30px;
         }
 
-        .chooseCard {
+        .portfolioCard {
             background: #ffffff;
-            padding: 35px 25px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-            transition: .4s ease;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: .3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
-        .chooseCard:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        .portfolioCard:hover {
+            transform: translateY(-8px);
         }
 
-        .chooseCard h3 {
+        .portfolioCard img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+        }
+
+        .portfolioCard h3 {
+            padding: 25px;
             color: #005288;
-            margin-bottom: 15px;
+        }
+
+        #faqSection {
+            background: #ffffff;
+        }
+
+        #faqGrid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .faqCard {
+            background: #f7f7f7;
+            padding: 28px;
+            border-radius: 16px;
+            transition: .3s;
+        }
+
+        .faqCard:hover {
+            transform: translateY(-5px);
+        }
+
+        .faqCard h3 {
+            color: #005288;
+            margin-bottom: 12px;
         }
 
         #testimonials {
             background: #ffffff;
         }
 
-        .testimonialBox {
+        #testimonialContainer {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            margin-top: 40px;
+            gap: 30px;
         }
 
         .testimonialCard {
-            background: #f4f4f4;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-            transition: .4s ease;
+            background: #f7f9fb;
+            padding: 35px;
+            border-radius: 16px;
+            transition: .3s;
         }
 
         .testimonialCard:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            transform: translateY(-6px);
         }
 
         .testimonialCard p {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
+            line-height: 150%;
         }
 
         .testimonialCard h4 {
             color: #005288;
         }
 
-        #portfolio {
-            background: #f4f4f4;
-        }
-
-        .portfolioBox {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .portfolioCard {
-            background: #ffffff;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-            transition: .4s ease;
-        }
-
-        .portfolioCard:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .portfolioCard img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: .5s;
-        }
-
-        .portfolioCard:hover img {
-            transform: scale(1.08);
-        }
-
-        .portfolioCard h3 {
-            padding: 20px;
-            color: #005288;
-            text-align: center;
-        }
-
-        #faq {
-            background: #ffffff;
-        }
-
-        .faqBox {
-            max-width: 900px;
-            margin: auto;
-        }
-
-        .faqItem {
-            background: #f4f4f4;
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            transition: .4s;
-        }
-
-        .faqItem:hover {
-            transform: translateX(10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-        }
-
-        .faqItem h3 {
-            color: #005288;
-            margin-bottom: 10px;
-        }
-
-        #stats {
-            background: #005288;
-        }
-
-        .statsBox {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            text-align: center;
-        }
-
-        .stat {
-            transition: .4s;
-        }
-
-        .stat:hover {
-            transform: translateY(-10px);
-        }
-
-        .stat h2 {
-            color: #c2cd23;
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-
-        .stat p {
-            color: #ffffff;
-            font-size: 16px;
-        }
-
         #cta {
-            background: #ffffff;
+            background: #005288;
             text-align: center;
+            color: #ffffff;
         }
 
         #cta h2 {
             font-size: 36px;
-            color: #005288;
             margin-bottom: 20px;
         }
 
         #cta p {
-            max-width: 700px;
-            margin: auto auto 30px;
+            margin-bottom: 35px;
+            font-size: 18px;
+        }
+
+        #cta .btn {
+            background: #c2cd23;
         }
 
         #contact {
-            background: #f4f4f4;
+            background: #f7f9fb;
         }
 
-        form {
-            max-width: 700px;
+        #contactForm {
+            max-width: 800px;
             margin: auto;
             background: #ffffff;
-            padding: 40px;
-            border-radius: 14px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-            transition: .4s;
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
         }
 
-        form:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        form input,
-        form textarea {
+        #contactForm input,
+        #contactForm textarea {
             width: 100%;
-            padding: 14px;
-            margin-bottom: 20px;
+            padding: 16px;
+            margin-bottom: 22px;
             border: 1px solid #dddddd;
-            border-radius: 6px;
-            font-size: 15px;
-            transition: .3s;
-        }
-
-        form input:focus,
-        form textarea:focus {
-            border-color: #005288;
+            border-radius: 8px;
             outline: none;
-            box-shadow: 0 0 10px rgba(0, 82, 136, 0.15);
+            font-size: 15px;
         }
 
-        form textarea {
+        #contactForm textarea {
+            height: 180px;
             resize: none;
-            height: 140px;
         }
 
-        form button {
+        #contactForm button {
+            padding: 15px 35px;
+            border: none;
             background: #005288;
             color: #ffffff;
-            border: none;
-            padding: 14px 30px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: .4s;
+            border-radius: 8px;
             font-size: 16px;
-        }
-
-        form button:hover {
-            background: #00395f;
-            transform: translateY(-3px);
+            cursor: pointer;
         }
 
         footer {
             background: #000000;
             color: #ffffff;
-            padding: 70px 7% 20px;
+            padding-top: 90px;
         }
 
-        .footerContainer {
+        #footerContainer {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 40px;
-            margin-bottom: 40px;
+            padding: 0 7% 70px;
         }
 
         .footerLogo {
-            color: #ffffff;
+            font-size: 34px;
             margin-bottom: 20px;
-            font-size: 32px;
         }
 
         .footerBox h3 {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-size: 28px;
-        }
-
-        .footerBox p {
-            margin-bottom: 15px;
-            line-height: 150%;
-            color: #dddddd;
         }
 
         .footerBox ul {
@@ -549,78 +485,59 @@
         }
 
         .footerBox ul li {
-            margin-bottom: 14px;
+            margin-bottom: 15px;
         }
 
         .footerBox ul li a {
-            text-decoration: none;
-            color: #dddddd;
+            color: #ffffff;
             transition: .3s;
         }
 
         .footerBox ul li a:hover {
             color: #c2cd23;
-            padding-left: 6px;
         }
 
-        .subscribeBox {
+        #subscribeBox {
+            display: flex;
+            gap: 10px;
             margin-top: 20px;
         }
 
-        .subscribeBox input {
+        #subscribeBox input {
             width: 100%;
             padding: 14px;
             border: none;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            outline: none;
+            border-radius: 8px;
         }
 
-        .subscribeBox button {
-            background: #005288;
-            color: #ffffff;
+        #subscribeBox button {
+            padding: 14px 18px;
+            background: #c2cd23;
             border: none;
-            padding: 14px 25px;
-            border-radius: 6px;
+            border-radius: 8px;
+            color: #ffffff;
             cursor: pointer;
-            transition: .4s;
         }
 
-        .subscribeBox button:hover {
-            background: #00395f;
-            transform: translateY(-3px);
-        }
-
-        .footerBottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            padding-top: 20px;
+        #footerBottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px;
             text-align: center;
         }
 
-        .footerBottom p {
-            color: #cccccc;
-        }
+        @media(max-width:992px) {
 
-        @media(max-width:900px) {
-
-            nav {
+            #topHeader {
                 flex-direction: column;
-                gap: 20px;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
             }
 
             #home,
-            .aboutBox,
-            .serviceBox,
-            .chooseBox,
-            .testimonialBox,
-            .portfolioBox,
-            .statsBox,
-            .footerContainer {
+            #aboutContainer,
+            #serviceContainer,
+            #portfolioContainer,
+            #faqGrid,
+            #testimonialContainer,
+            #footerContainer {
                 grid-template-columns: 1fr;
             }
 
@@ -628,16 +545,130 @@
                 text-align: center;
             }
 
-            .homeText p {
-                margin: auto auto 30px;
+            #heroButtons {
+                justify-content: center;
+                flex-wrap: wrap;
             }
 
-            .homeText h1 {
-                font-size: 40px;
+            #homeContent h1 {
+                font-size: 44px;
             }
 
-            section {
-                padding: 70px 20px;
+            #navMenu {
+                gap: 25px;
+            }
+
+            .title h2 {
+                font-size: 36px;
+            }
+
+            #cta h2 {
+                font-size: 36px;
+            }
+        }
+
+        .serviceCard img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        #webDesignContainer,
+        #developmentContainer,
+        #brandingContainer,
+        #seoContainer,
+        #marketingContainer {
+            display: grid;
+            grid-template-columns: repeat(3, 340px);
+            justify-content: center;
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .serviceCard {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+            transition: .3s;
+            overflow: hidden;
+        }
+
+        .serviceCard:hover {
+            transform: translateY(-8px);
+        }
+
+        .serviceCard img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .serviceCard h3 {
+            color: #005288;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .serviceCard p {
+            font-size: 16px;
+            line-height: 150%;
+            color: #555555;
+            margin-bottom: 20px;
+        }
+
+        .serviceCard ul {
+            list-style: none;
+            border-top: 1px solid #e5e5e5;
+            padding-top: 18px;
+        }
+
+        .serviceCard ul li {
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: #444444;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .serviceCard ul li::before {
+            content: "✔";
+            width: 22px;
+            height: 22px;
+            background: #005288;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        @media(max-width:1150px) {
+
+            #webDesignContainer,
+            #developmentContainer,
+            #brandingContainer,
+            #seoContainer,
+            #marketingContainer {
+                grid-template-columns: repeat(2, 340px);
+            }
+        }
+
+        @media(max-width:768px) {
+
+            #webDesignContainer,
+            #developmentContainer,
+            #brandingContainer,
+            #seoContainer,
+            #marketingContainer {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -646,39 +677,95 @@
 
 <body>
 
-    <header class="fadeUp">
+    <section id="topHeader">
 
-        <nav>
+        <div id="logoSection">
 
-            <div class="logo">Nova Networks</div>
+            <h1>Nova Networks</h1>
 
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
+        </div>
+
+        <div id="searchSection">
+
+            <input type="text" placeholder="Search services here...">
+
+        </div>
+
+        <div id="topButtons">
+
+            <a href="#">Login / Register</a>
+
+            <a href="#">Request a Quote</a>
+
+        </div>
+
+    </section>
+
+    <header id="mainHeader">
+
+        <nav id="navbar">
+
+            <ul id="navMenu">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#about">ABOUT US</a></li>
+                <li><a href="#services">SERVICES</a></li>
+                <li><a href="#portfolio">PORTFOLIO</a></li>
+                <li><a href="#webDesignSection">WEB DESIGN</a></li>
+                <li><a href="#developmentSection">DEVELOPMENT</a></li>
+                <li><a href="#brandingSection">BRANDING</a></li>
+                <li><a href="#seoSection">SEO SERVICES</a></li>
+                <li><a href="#marketingSection">MARKETING</a></li>
+                <li><a href="#contact">CONTACT US</a></li>
+
             </ul>
 
         </nav>
 
     </header>
-    
+
+    <section id="breadcrumb">
+
+        <p>
+            Home
+        </p>
+
+    </section>
+
     <section id="home">
 
-        <div class="homeText fadeUp">
+        <div id="homeContent">
 
-            <h1>Modern Solutions For Growing Businesses</h1>
+            <span id="heroTag">
+                PROFESSIONAL DIGITAL SOLUTIONS
+            </span>
+
+            <h1>
+                Modern Solutions
+                For Growing
+                Businesses
+            </h1>
 
             <p>
-                We create professional websites and digital solutions that help businesses
-                improve their online presence and connect with more customers.
+                We create professional websites and digital solutions
+                that help businesses improve their online presence
+                and connect with more customers.
             </p>
 
-            <a href="#services" class="btn">Explore Services</a>
+            <div id="heroButtons">
+
+                <a href="#services" class="btn">
+                    Explore Services
+                </a>
+
+                <a href="#contact" id="secondaryBtn">
+                    Contact Us
+                </a>
+
+            </div>
 
         </div>
 
-        <div class="homeImage fadeUp">
+        <div id="homeImage">
 
             <img src="img/group.jpg" alt="Business Team">
 
@@ -688,31 +775,37 @@
 
     <section id="about">
 
-        <div class="title fadeUp">
+        <div class="title">
 
             <h2>About Us</h2>
 
             <p>
-                We focus on creating modern and user-friendly digital experiences.
+                We create modern digital experiences for startups and businesses.
             </p>
 
         </div>
 
-        <div class="aboutBox fadeUp">
+        <div id="aboutContainer">
 
-            <img src="img/IMAGE 4.png" alt="About Image">
+            <div id="aboutImage">
 
-            <div class="aboutText">
+                <img src="img/IMAGE 4.png" alt="About">
+
+            </div>
+
+            <div id="aboutText">
 
                 <p>
-                    Our team helps businesses build responsive and visually attractive websites
-                    using clean layouts and proper structure.
+                    Our team builds responsive and professional websites
+                    with modern UI design and clean user experience.
                 </p>
 
                 <p>
-                    We believe in simple designs, better performance, and smooth user experience
-                    for every project.
+                    We focus on branding, development, and marketing
+                    strategies that help businesses grow online.
                 </p>
+
+                <a href="#" class="btn">Learn More</a>
 
             </div>
 
@@ -722,44 +815,44 @@
 
     <section id="services">
 
-        <div class="title fadeUp">
+        <div class="title">
 
             <h2>Our Services</h2>
 
             <p>
-                We provide modern web solutions for startups and businesses.
+                Professional digital solutions for modern businesses.
             </p>
 
         </div>
 
-        <div class="serviceBox">
+        <div id="serviceContainer">
 
-            <div class="service fadeUp delay1">
+            <div class="serviceCard">
 
                 <h3>Web Design</h3>
 
                 <p>
-                    Clean and responsive layouts with modern UI design.
+                    Modern responsive layouts with clean structure and UI design.
                 </p>
 
             </div>
 
-            <div class="service fadeUp delay2">
+            <div class="serviceCard">
 
                 <h3>Development</h3>
 
                 <p>
-                    Fast and structured websites built with proper coding standards.
+                    Optimized coding structure with high performance websites.
                 </p>
 
             </div>
 
-            <div class="service fadeUp delay3">
+            <div class="serviceCard">
 
                 <h3>Branding</h3>
 
                 <p>
-                    Creative branding solutions to improve business identity.
+                    Creative branding identity solutions for startups.
                 </p>
 
             </div>
@@ -768,46 +861,523 @@
 
     </section>
 
-    <section id="choose">
+    <section id="portfolio">
 
-        <div class="title fadeUp">
+        <div class="title">
 
-            <h2>Why Choose Us</h2>
+            <h2>Our Portfolio</h2>
 
             <p>
-                We provide modern designs, better performance, and responsive layouts.
+                Some recent creative and professional projects.
             </p>
 
         </div>
 
-        <div class="chooseBox">
+        <div id="portfolioContainer">
 
-            <div class="chooseCard fadeUp delay1">
+            <div class="portfolioCard">
+
+                <img src="img/IMAGE 1.png" alt="Portfolio">
+
+                <h3>Corporate Website</h3>
+
+            </div>
+
+            <div class="portfolioCard">
+
+                <img src="img/IMAGE 2.png" alt="Portfolio">
+
+                <h3>Business Branding</h3>
+
+            </div>
+
+            <div class="portfolioCard">
+
+                <img src="img/IMAGE 3.png" alt="Portfolio">
+
+                <h3>Marketing Design</h3>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="webDesignSection">
+
+        <div class="title">
+
+            <h2>Web Design</h2>
+
+            <p>
+                Modern and responsive website design solutions
+                for startups and businesses.
+            </p>
+
+        </div>
+
+        <div id="webDesignContainer">
+
+            <div class="serviceCard">
+
+                <img src="img/webdesign.jpg" alt="Web Design">
 
                 <h3>Responsive Design</h3>
 
                 <p>
-                    Websites that work smoothly on desktop and mobile devices.
+                    Modern responsive websites optimized
+                    for all devices and screen sizes.
+                </p>
+
+                <ul>
+
+                    <li>Mobile Friendly Layout</li>
+                    <li>Modern UI Design</li>
+                    <li>Fast Loading Speed</li>
+                    <li>Professional Structure</li>
+
+                </ul>
+
+            </div>
+
+            <div class="serviceCard">
+
+                <img src="img/uiux.jpg" alt="UI UX">
+
+                <h3>UI / UX Design</h3>
+
+                <p>
+                    Creative and user-friendly interface
+                    design for better engagement.
+                </p>
+
+                <ul>
+
+                    <li>Clean Navigation</li>
+                    <li>Interactive Layout</li>
+                    <li>Modern Typography</li>
+                    <li>Better User Experience</li>
+
+                </ul>
+
+            </div>
+
+            <div class="serviceCard">
+
+                <img src="img/landingpage.jpg" alt="Landing Page">
+
+                <h3>Landing Pages</h3>
+
+                <p>
+                    High-converting landing pages
+                    designed for businesses.
+                </p>
+
+                <ul>
+
+                    <li>Lead Generation</li>
+                    <li>SEO Friendly</li>
+                    <li>Business Growth</li>
+                    <li>Custom Design</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="developmentSection">
+
+        <div class="title">
+
+            <h2>Development</h2>
+
+            <p>
+                Secure and scalable development
+                solutions for modern businesses.
+            </p>
+
+        </div>
+
+        <div id="developmentContainer">
+
+            <div class="serviceCard">
+
+                <img src="img/frontend.jpg" alt="Frontend">
+
+                <h3>Frontend Development</h3>
+
+                <p>
+                    Interactive frontend development
+                    using modern technologies.
+                </p>
+
+                <ul>
+
+                    <li>HTML & CSS</li>
+                    <li>Responsive Design</li>
+                    <li>Animations</li>
+                    <li>Modern Interface</li>
+
+                </ul>
+
+            </div>
+
+            <div class="serviceCard">
+
+                <img src="img/backend.jpg" alt="Backend">
+
+                <h3>Backend Development</h3>
+
+                <p>
+                    Secure backend systems with
+                    optimized performance.
+                </p>
+
+                <ul>
+
+                    <li>Authentication</li>
+                    <li>API Integration</li>
+                    <li>Secure Database</li>
+                    <li>Optimized Code</li>
+
+                </ul>
+
+            </div>
+
+            <div class="serviceCard">
+
+                <img src="img/database.jpg" alt="Database">
+
+                <h3>Database Integration</h3>
+
+                <p>
+                    Structured database solutions
+                    for websites and apps.
+                </p>
+
+                <ul>
+
+                    <li>MySQL Support</li>
+                    <li>PostgreSQL</li>
+                    <li>Cloud Database</li>
+                    <li>Optimized Queries</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="brandingSection">
+
+        <div class="title">
+
+            <h2>Branding</h2>
+
+            <p>
+                Creative branding strategies
+                for modern companies.
+            </p>
+
+        </div>
+
+        <div id="brandingContainer">
+
+            <div class="serviceCard">
+
+                <img src="img/logo.jpg" alt="Logo Design">
+
+                <h3>Logo Design</h3>
+
+                <p>
+                    Creative logo concepts designed
+                    for businesses and startups.
+                </p>
+
+                <ul>
+
+                    <li>Professional Branding</li>
+                    <li>Creative Concepts</li>
+                    <li>Business Identity</li>
+                    <li>Custom Designs</li>
+
+                </ul>
+
+            </div>
+
+            <div class="serviceCard">
+
+                <img src="img/brandidentity.jpg" alt="Brand Identity">
+
+                <h3>Brand Identity</h3>
+
+                <p>
+                    Complete branding identity
+                    for growing businesses.
+                </p>
+
+                <ul>
+
+                    <li>Typography Design</li>
+                    <li>Visual Identity</li>
+                    <li>Color Palette</li>
+                    <li>Brand Guidelines</li>
+
+                </ul>
+
+            </div>
+
+            <div class="serviceCard">
+
+                <img src="img/creative.jpg" alt="Creative Strategy">
+
+                <h3>Creative Strategy</h3>
+
+                <p>
+                    Creative marketing and branding
+                    solutions for growth.
+                </p>
+
+                <ul>
+
+                    <li>Campaign Planning</li>
+                    <li>Business Growth</li>
+                    <li>Brand Awareness</li>
+                    <li>Market Research</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="seoSection">
+
+        <div class="title">
+
+            <h2>SEO Services</h2>
+
+            <p>
+                Improve your website ranking
+                and online visibility.
+            </p>
+
+        </div>
+
+        <div id="seoContainer">
+
+            <div class="serviceCard">
+
+                <img src="img/onpage.jpg" alt="SEO">
+
+                <h3>On Page SEO</h3>
+
+                <p>
+                    SEO optimization techniques
+                    for higher rankings.
+                </p>
+
+                <ul>
+
+                    <li>Keyword Optimization</li>
+                    <li>Meta Tags</li>
+                    <li>Technical SEO</li>
+                    <li>Content Structure</li>
+
+                </ul>
+
+            </div>
+
+            <div class="serviceCard">
+
+                <img src="img/keyword.jpg" alt="Keyword">
+
+                <h3>Keyword Research</h3>
+
+                <p>
+                    Professional keyword strategies
+                    for business growth.
+                </p>
+
+                <ul>
+
+                    <li>Traffic Analysis</li>
+                    <li>Competitor Research</li>
+                    <li>SEO Planning</li>
+                    <li>Search Ranking</li>
+
+                </ul>
+
+            </div>
+
+            <div class="serviceCard">
+
+                <img src="img/technicalseo.jpg" alt="Technical SEO">
+
+                <h3>Technical SEO</h3>
+
+                <p>
+                    Technical optimization for
+                    better website performance.
+                </p>
+
+                <ul>
+
+                    <li>Website Audit</li>
+                    <li>Performance Fixes</li>
+                    <li>Page Speed</li>
+                    <li>Search Visibility</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="marketingSection">
+
+        <div class="title">
+
+            <h2>Marketing</h2>
+
+            <p>
+                Professional marketing solutions
+                for online business growth.
+            </p>
+
+        </div>
+
+        <div id="marketingContainer">
+
+            <div class="serviceCard">
+
+                <img src="img/socialmedia.jpg" alt="Social Media">
+
+                <h3>Social Media Marketing</h3>
+
+                <p>
+                    Professional social campaigns
+                    to improve engagement.
+                </p>
+
+                <ul>
+
+                    <li>Instagram Marketing</li>
+                    <li>Facebook Campaigns</li>
+                    <li>Audience Engagement</li>
+                    <li>Analytics Reports</li>
+
+                </ul>
+
+            </div>
+
+            <div class="serviceCard">
+
+                <img src="img/emailmarketing.jpg" alt="Email Marketing">
+
+                <h3>Email Marketing</h3>
+
+                <p>
+                    Targeted email campaigns
+                    for customer retention.
+                </p>
+
+                <ul>
+
+                    <li>Email Campaigns</li>
+                    <li>Automation Setup</li>
+                    <li>Lead Generation</li>
+                    <li>Newsletter Design</li>
+
+                </ul>
+
+            </div>
+
+            <div class="serviceCard">
+
+                <img src="img/contentmarketing.jpg" alt="Content Marketing">
+
+                <h3>Content Marketing</h3>
+
+                <p>
+                    Creative content strategies
+                    for branding and promotion.
+                </p>
+
+                <ul>
+
+                    <li>Blog Writing</li>
+                    <li>SEO Content</li>
+                    <li>Marketing Strategy</li>
+                    <li>Business Promotion</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="faqSection">
+
+        <div class="title">
+
+            <h2>FAQs</h2>
+
+        </div>
+
+        <div id="faqGrid">
+
+            <div class="faqCard">
+
+                <h3>What services do you provide?</h3>
+
+                <p>
+                    We provide web development, branding,
+                    UI/UX design, and marketing solutions.
                 </p>
 
             </div>
 
-            <div class="chooseCard fadeUp delay2">
+            <div class="faqCard">
 
-                <h3>Modern UI</h3>
+                <h3>Do you create responsive websites?</h3>
 
                 <p>
-                    Clean and professional layouts focused on user experience.
+                    Yes, every website is optimized
+                    for all devices and screen sizes.
                 </p>
 
             </div>
 
-            <div class="chooseCard fadeUp delay3">
+            <div class="faqCard">
 
-                <h3>Fast Performance</h3>
+                <h3>How long does project delivery take?</h3>
 
                 <p>
-                    Optimized website structure for better loading speed.
+                    Most projects are completed within
+                    a few days depending on requirements.
+                </p>
+
+            </div>
+
+            <div class="faqCard">
+
+                <h3>Can I customize the design?</h3>
+
+                <p>
+                    Yes, all layouts are customized
+                    according to your business needs.
                 </p>
 
             </div>
@@ -818,41 +1388,38 @@
 
     <section id="testimonials">
 
-        <div class="title fadeUp">
+        <div class="title">
 
             <h2>Client Testimonials</h2>
 
         </div>
 
-        <div class="testimonialBox">
+        <div id="testimonialContainer">
 
-            <div class="testimonialCard fadeUp delay1">
+            <div class="testimonialCard">
 
                 <p>
-                    “Nova Networks created a modern and responsive website for our business.
-                    The design quality and performance were excellent.”
+                    “Very professional design and smooth user experience.”
                 </p>
 
                 <h4>- Michael Johnson</h4>
 
             </div>
 
-            <div class="testimonialCard fadeUp delay2">
+            <div class="testimonialCard">
 
                 <p>
-                    “Their team delivered the project on time with a clean and professional layout.
-                    Highly recommended.”
+                    “Creative and modern website with excellent support.”
                 </p>
 
                 <h4>- Sarah Williams</h4>
 
             </div>
 
-            <div class="testimonialCard fadeUp delay3">
+            <div class="testimonialCard">
 
                 <p>
-                    “Very smooth experience from start to finish. The website looks modern
-                    and works perfectly on all devices.”
+                    “Highly recommended for businesses looking for modern websites.”
                 </p>
 
                 <h4>- David Miller</h4>
@@ -863,139 +1430,27 @@
 
     </section>
 
-    <section id="portfolio">
-
-        <div class="title fadeUp">
-
-            <h2>Our Portfolio</h2>
-
-        </div>
-
-        <div class="portfolioBox">
-
-            <div class="portfolioCard fadeUp delay1">
-
-                <img src="img/IMAGE 1.png" alt="Portfolio">
-
-                <h3>Corporate Website</h3>
-
-            </div>
-
-            <div class="portfolioCard fadeUp delay2">
-
-                <img src="img/IMAGE 2.png" alt="Portfolio">
-
-                <h3>Business Branding</h3>
-
-            </div>
-
-            <div class="portfolioCard fadeUp delay3">
-
-                <img src="img/IMAGE 3.png" alt="Portfolio">
-
-                <h3>E-Commerce Design</h3>
-
-            </div>
-
-        </div>
-
-    </section>
-    <section id="faq">
-
-        <div class="title fadeUp">
-
-            <h2>Frequently Asked Questions</h2>
-
-        </div>
-
-        <div class="faqBox">
-
-            <div class="faqItem fadeUp delay1">
-
-                <h3>How long does a project take?</h3>
-
-                <p>
-                    Most projects are completed within 1-2 weeks depending on requirements.
-                </p>
-
-            </div>
-
-            <div class="faqItem fadeUp delay2">
-
-                <h3>Do you create responsive websites?</h3>
-
-                <p>
-                    Yes, all our websites are fully responsive and mobile-friendly.
-                </p>
-
-            </div>
-
-            <div class="faqItem fadeUp delay3">
-
-                <h3>Can I customize the design?</h3>
-
-                <p>
-                    Yes, every design is customized according to business requirements.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <section id="stats">
-
-        <div class="statsBox">
-
-            <div class="stat fadeUp delay1">
-
-                <h2>250+</h2>
-
-                <p>Projects Completed</p>
-
-            </div>
-
-            <div class="stat fadeUp delay2">
-
-                <h2>120+</h2>
-
-                <p>Happy Clients</p>
-
-            </div>
-
-            <div class="stat fadeUp delay3">
-
-                <h2>5+</h2>
-
-                <p>Years Experience</p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <section id="cta" class="fadeUp delay1">
+    <section id="cta">
 
         <h2>Ready To Grow Your Business?</h2>
 
         <p>
-            Let’s create a modern website that helps your business stand out online.
+            Let’s create a modern digital experience for your company.
         </p>
 
-        <a href="#contact" class="btn">Get Started</a>
+        <a href="#" class="btn">Get Started</a>
 
     </section>
+
     <section id="contact">
 
-        <div class="title fadeUp">
+        <div class="title">
 
             <h2>Contact Us</h2>
 
         </div>
 
-        <form class="fadeUp delay1">
+        <form id="contactForm">
 
             <input type="text" placeholder="Your Name">
 
@@ -1009,23 +1464,18 @@
 
     </section>
 
-    <footer class="fadeUp">
+    <footer>
 
-        <div class="footerContainer">
+        <div id="footerContainer">
 
             <div class="footerBox">
 
                 <h2 class="footerLogo">Nova Networks</h2>
 
                 <p>
-                    107 North Main Street,<br>
-                    Texas 77964,<br>
-                    United States
+                    Professional digital solutions
+                    for startups and businesses.
                 </p>
-
-                <p>Email: info@novanetworks.com</p>
-
-                <p>Phone: +1 987 654 3210</p>
 
             </div>
 
@@ -1037,8 +1487,7 @@
 
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Services</a></li>
-                    <li><a href="#">Testimonials</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Portfolio</a></li>
                     <li><a href="#">Contact</a></li>
 
                 </ul>
@@ -1047,15 +1496,13 @@
 
             <div class="footerBox">
 
-                <h3>Our Services</h3>
+                <h3>Services</h3>
 
                 <ul>
 
                     <li><a href="#">Web Design</a></li>
                     <li><a href="#">Development</a></li>
                     <li><a href="#">Branding</a></li>
-                    <li><a href="#">SEO Services</a></li>
-                    <li><a href="#">Marketing</a></li>
 
                 </ul>
 
@@ -1066,10 +1513,10 @@
                 <h3>Stay Connected</h3>
 
                 <p>
-                    Subscribe to receive updates and promotional offers.
+                    Subscribe to receive updates and offers.
                 </p>
 
-                <div class="subscribeBox">
+                <div id="subscribeBox">
 
                     <input type="email" placeholder="Enter Email">
 
@@ -1081,9 +1528,11 @@
 
         </div>
 
-        <div class="footerBottom">
+        <div id="footerBottom">
 
-            <p>&copy; 2024 Nova Networks. All Rights Reserved.</p>
+            <p>
+                &copy; 2024 Nova Networks. All Rights Reserved.
+            </p>
 
         </div>
 
